@@ -1,0 +1,7 @@
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="40" height="40" rx="8" fill="#0E82FD"/>
+  <path d="M20 10V30M10 20H30" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <text x="50" y="28" fill="#012047" style="font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 700;">
+    <tspan fill="#0E82FD">Medi</tspan>call
+  </text>
+</svg>

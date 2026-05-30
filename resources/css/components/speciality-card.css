@@ -1,0 +1,15 @@
+.speciality-card {
+  @apply bg-white rounded-2xl border border-slate-200 p-4 flex flex-row justify-center text-center transition duration-300;
+}
+
+.speciality-card:hover {
+  @apply shadow-xl;
+}
+
+.speciality-card-icon {
+  @apply w-20 h-20 mb-6 flex items-center justify-center;
+}
+
+.speciality-card-title {
+  @apply text-xl font-semibold text-slate-900 mb-3;
+}

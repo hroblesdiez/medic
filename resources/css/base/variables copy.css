@@ -1,0 +1,108 @@
+@theme {
+  /* =========================================
+     COLORS
+  ========================================= */
+
+  --color-primary: #0e82fd;
+  --color-primary-dark: #172b85;
+  --color-primary-light: #75adf5;
+  --color-primary-soft: #e2edff;
+
+  --color-secondary: #012047;
+  --color-secondary-dark: #000f28;
+  --color-secondary-brand: #822bd4;
+
+  --color-accent-orange: #fd6020;
+  --color-accent-yellow: #ffca18;
+  --color-accent-green: #04bd6c;
+  --color-accent-red: #ed0006;
+  --color-accent-purple: #6461fc;
+
+  --color-success: #04bd6c;
+  --color-warning: #f9a000;
+  --color-danger: #ff0000;
+
+  --color-text-primary: #012047;
+  --color-text-secondary: #465d7c;
+  --color-text-muted: #91a0b3;
+  --color-text-white: #ffffff;
+
+  --color-border: #e3e6ec;
+  --color-border-light: #e6e8ee;
+
+  --color-surface: #ffffff;
+  --color-surface-soft: #f9fcff;
+  --color-surface-muted: #f9fafb;
+
+  /* =========================================
+     TYPOGRAPHY
+  ========================================= */
+
+  --font-primary: 'Inter', sans-serif;
+  --font-description: 'Roboto', sans-serif;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  --text-4xl: 36px;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* =========================================
+     SPACING
+  ========================================= */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 60px;
+  --space-12: 100px;
+
+  /* =========================================
+     RADIUS
+  ========================================= */
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 15px;
+  --radius-2xl: 20px;
+  --radius-3xl: 25px;
+  --radius-4xl: 30px;
+  --radius-fullish: 44px;
+  --radius-pill: 55px;
+
+  /* =========================================
+     SHADOWS
+  ========================================= */
+
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 24px rgba(1, 32, 71, 0.08);
+  --shadow-button: 0 6px 16px rgba(14, 130, 253, 0.24);
+
+  /* =========================================
+     CONTAINER
+  ========================================= */
+
+  --container-width: 1296px;
+
+  /* =========================================
+     TRANSITIONS
+  ========================================= */
+
+  --transition-base: all 0.3s ease;
+}
