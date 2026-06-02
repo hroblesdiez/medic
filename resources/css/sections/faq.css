@@ -1,0 +1,39 @@
+.faq-section {
+  @apply section-container bg-white;
+}
+
+.faq-grid {
+  @apply grid-2-cols items-start;
+}
+
+.faq-image {
+  @apply w-full h-auto rounded-2xl shadow-lg;
+}
+
+.faq-accordion {
+  @apply space-y-4;
+}
+
+.faq-item {
+  @apply bg-slate-50 rounded-xl p-6 transition-all duration-300;
+}
+
+.faq-question {
+  @apply flex justify-between items-center w-full text-left text-lg font-bold text-secondary transition;
+
+  &:hover {
+    @apply text-primary;
+  }
+}
+
+.faq-toggle {
+  @apply flex items-center justify-center w-8 h-8 bg-white rounded-lg text-lg font-bold text-primary shadow-sm;
+}
+
+.faq-answer {
+  @apply text-slate-600 mt-4 leading-relaxed;
+}
+
+.faq-divider {
+  @apply w-full h-px bg-slate-200 mb-4;
+}

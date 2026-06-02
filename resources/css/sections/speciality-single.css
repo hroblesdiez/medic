@@ -1,0 +1,35 @@
+.speciality-intro {
+  @apply py-12 lg:py-20;
+}
+
+.speciality-intro__grid {
+  @apply flex flex-col lg:flex-row gap-12 lg:items-center;
+}
+
+.speciality-intro__content {
+  @apply w-full lg:w-1/2;
+}
+
+.speciality-intro__title {
+  @apply text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-8 leading-tight;
+}
+
+.speciality-intro__text {
+  @apply text-[var(--color-text-secondary)] leading-relaxed text-lg;
+}
+
+.speciality-intro__image-wrapper {
+  @apply w-full lg:w-1/2 aspect-video lg:aspect-square relative overflow-hidden rounded-[var(--radius-xl)] shadow-xl;
+}
+
+.speciality-intro__image {
+  @apply w-full h-full object-cover;
+}
+
+.speciality-intro__placeholder {
+  @apply w-full h-full bg-[var(--color-surface-soft)] flex items-center justify-center;
+}
+
+.top-doctors {
+  @apply py-16 lg:py-24;
+}

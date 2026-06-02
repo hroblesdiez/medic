@@ -11,11 +11,14 @@ use App\PostTypes\Speciality;
 use App\PostTypes\Doctors;
 use App\PostTypes\Testimonials;
 use App\PostTypes\FAQ;
+use App\PostTypes\Appointments;
 use App\Fields\OptionsPage;
 use App\Fields\SpecialityFields;
 use App\Fields\DoctorsFields;
 use App\Fields\TestimonialsFields;
 use App\Fields\FAQFields;
+use App\Fields\UserFields;
+use App\Fields\AppointmentsFields;
 use App\Taxonomies\SpecialityType;
 
 
@@ -161,7 +164,8 @@ add_action('after_setup_theme', function () {
     (new Doctors())->register();
     (new Testimonials())->register();
     (new FAQ())->register();
-    (new SpecialityType)->register();
+    (new SpecialityType())->register();
+    (new Appointments())->register();
 }, 20);
 
 /**
@@ -191,6 +195,8 @@ add_action('carbon_fields_register_fields', function () {
     (new DoctorsFields())->register();
     (new TestimonialsFields())->register();
     (new FAQFields())->register();
+    (new UserFields())->register();
+    (new AppointmentsFields())->register();
 });
 
 /**

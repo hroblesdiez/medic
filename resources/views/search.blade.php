@@ -3,17 +3,27 @@
 @section('content')
   @include('partials.page-header')
 
-  @if (! have_posts())
-    <x-alert type="warning">
-      {!! __('Sorry, no results were found.', 'sage') !!}
-    </x-alert>
+  <section class="section-container">
+    <div class="content-container">
+      @if (! have_posts())
+        <x-alert type="warning">
+          {!! __('Sorry, no results were found.', 'sage') !!}
+        </x-alert>
 
-    {!! get_search_form(false) !!}
-  @endif
+        <div class="mt-8 max-w-xl mx-auto">
+          {!! get_search_form(false) !!}
+        </div>
+      @endif
 
-  @while(have_posts()) @php(the_post())
-    @include('partials.content-search')
-  @endwhile
+      <div class="space-y-12">
+        @while(have_posts()) @php(the_post())
+          @include('partials.content-search')
+        @endwhile
+      </div>
 
-  {!! get_the_posts_navigation() !!}
+      <div class="mt-12">
+        {!! get_the_posts_navigation() !!}
+      </div>
+    </div>
+  </section>
 @endsection

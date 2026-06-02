@@ -1,0 +1,39 @@
+.cta-banner {
+  @apply rounded-[32px] bg-primary py-6 px-6;
+
+  @media (min-width: 1024px) {
+    @apply py-8 px-10;
+  }
+}
+
+.cta-banner__container {
+  @apply flex flex-col items-center justify-between gap-10;
+
+  @media (min-width: 1024px) {
+    @apply flex-row;
+  }
+}
+
+.cta-banner__title {
+  @apply text-3xl font-bold leading-tight text-white! mb-5;
+
+  @media (min-width: 1024px) {
+    @apply text-5xl;
+  }
+}
+
+.cta-banner__description {
+  @apply text-base leading-8 text-blue-100! mb-8;
+}
+
+.cta-banner__image-wrapper {
+  @apply relative flex justify-center self-end -mb-12;
+
+  @media (min-width: 1024px) {
+    @apply -mb-16;
+  }
+}
+
+.cta-banner__image {
+  @apply relative z-10 w-full max-w-50 object-contain drop-shadow-2xl;
+}

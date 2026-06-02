@@ -1,8 +1,8 @@
-<section class="py-4 lg:py-8 overflow-hidden">
+<section class="section-container">
 
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div class="content-container">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="grid-2-cols">
 
       <!-- LEFT IMAGES -->
       <div class="grid grid-cols-2 gap-4 lg:gap-6">
@@ -26,7 +26,7 @@
         <div class="flex flex-col justify-center gap-4 lg:gap-6">
 
           <!-- EXPERIENCE CARD -->
-          <div class="flex flex-col items-center justify-center rounded-3xl bg-primary py-2 lg:py-4 text-center">
+          <div class="flex flex-col items-center justify-center rounded-3xl bg-primary py-4 text-center">
 
             <p class="text-5xl font-bold text-white!">
               30+
@@ -50,35 +50,35 @@
       <!-- RIGHT CONTENT -->
       <div class="flex flex-col">
 
-        <span class="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
+        <span class="section-subtitle">
           About Our Company
         </span>
 
-        <h2 class="mb-6 text-4xl font-bold leading-tight text-slate-900 lg:text-5xl">
+        <h2 class="section-title">
           We Ensure Always The Best
         </h2>
 
-        <p class="mb-6 text-base leading-8 text-slate-600">
+        <p class="section-description">
           At Doccure, we understand the importance of accessible and convenient healthcare.
           Our mission is to simplify the process of finding and booking appointments with
           qualified healthcare professionals, ensuring that you receive the care you need
           when you need it.
         </p>
 
-        <p class="mb-8 text-base leading-8 text-slate-600">
+        <p class="section-description mb-8!">
           We envision a world where healthcare is easily accessible to everyone.
-          Whether you're seeking routine check-ups, specialized consultations,
+          Whether you're seeking routine check-up, specialized consultations,
           or emergency care, we strive to connect you with the right medical
           professionals effortlessly.
         </p>
 
         <!-- PHONE BLOCK -->
-        <div class="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-8">
+        <div class="flex items-center gap-6 mt-8">
 
           <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary-soft">
 
             <img
-              class="h-6 w-6"
+              class="w-full h-full"
               src="{{ Vite::asset('resources/images/phone.svg') }}"
               alt="Phone">
 

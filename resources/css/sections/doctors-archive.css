@@ -1,0 +1,127 @@
+.doctors-archive {
+  @apply bg-surface-soft min-h-screen py-8 lg:py-12;
+}
+
+.doctors-archive__container {
+  @apply content-container;
+}
+
+.doctors-archive__header {
+  @apply mb-8 lg:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6;
+}
+
+.doctors-archive__results-badge {
+  @apply bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm flex items-center gap-2;
+}
+
+.doctors-archive__main-grid {
+  @apply flex flex-col lg:flex-row gap-10;
+}
+
+/* Sidebar Filters */
+
+.doctors-filter {
+  @apply w-full lg:w-[320px] shrink-0;
+}
+
+.doctors-filter__card {
+  @apply bg-white rounded-2xl p-8 shadow-(--shadow-card) border border-slate-200 sticky top-28;
+}
+
+.doctors-filter__header {
+  @apply flex items-center justify-between mb-8 border-b border-slate-100 pb-5;
+}
+
+.doctors-filter__section {
+  @apply mb-10;
+}
+
+.doctors-filter__section-title {
+  @apply text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 block;
+}
+
+/* Custom Radio/Checkbox */
+
+.filter-option {
+  @apply flex items-center cursor-pointer mb-4 last:mb-0;
+}
+
+.filter-option__input {
+  @apply appearance-none
+         w-5
+         h-5
+         border-2
+         border-slate-200
+         rounded-md
+         checked:bg-primary
+         checked:border-primary
+         transition-all
+         cursor-pointer;
+}
+
+.filter-option__label {
+  @apply ml-3 text-sm font-medium text-slate-500 transition-colors;
+
+  .filter-option:hover & {
+    @apply text-secondary;
+  }
+}
+
+/* Range Input */
+
+.filter-range {
+  @apply w-full
+         h-1.5
+         bg-primary-soft
+         rounded-lg
+         appearance-none
+         cursor-pointer
+         accent-primary
+         mt-4;
+}
+
+/* Results Area */
+
+.doctors-results {
+  @apply grow relative min-h-100;
+}
+
+.doctors-results__grid {
+  @apply grid
+         grid-cols-1
+         md:grid-cols-2
+         lg:grid-cols-3
+         gap-8
+         items-stretch;
+}
+
+/* Card consistency */
+
+.doctors-results__grid > * {
+  @apply h-full;
+}
+
+.doctor-card {
+  @apply h-[430px];
+}
+
+.doctors-results__loading {
+  @apply absolute
+         inset-0
+         bg-white/60
+         backdrop-blur-[1px]
+         z-20
+         flex
+         items-start
+         justify-center
+         pt-20;
+}
+
+.doctors-results__empty {
+  @apply flex
+         flex-col
+         items-center
+         justify-center
+         py-20
+         text-center;
+}

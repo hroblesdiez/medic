@@ -18,7 +18,7 @@
   </div>
 
   <!-- TITLE -->
-  <h5 class="mb-4 text-xl font-bold text-slate-900">
+  <h5 class="mb-4!">
     {{ $title }}
   </h5>
 

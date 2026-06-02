@@ -1,0 +1,218 @@
+.contact-section {
+  @apply py-8 bg-white;
+
+  @media (min-width: 1024px) {
+    @apply py-12;
+  }
+}
+
+.contact-container {
+  @apply mx-auto w-full max-w-7xl px-4;
+
+  @media (min-width: 1024px) {
+    @apply px-48;
+  }
+}
+
+.contact-grid {
+  @apply grid grid-cols-1 gap-12;
+
+  @media (min-width: 1024px) {
+    @apply grid-cols-2 gap-24;
+  }
+}
+
+/* ========================================
+   LEFT COLUMN
+======================================== */
+
+.contact-info-title {
+  @apply text-3xl font-bold text-secondary mb-6;
+
+  @media (min-width: 1024px) {
+    @apply text-4xl;
+  }
+}
+
+.contact-info-text {
+  @apply text-text-secondary text-lg mb-10;
+}
+
+.contact-details {
+  @apply flex flex-col gap-8;
+}
+
+.contact-detail-item {
+  @apply flex items-start gap-4;
+}
+
+.contact-detail-icon {
+  @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary shadow-sm;
+
+  svg {
+    @apply h-6 w-6;
+  }
+}
+
+.contact-detail-content h4 {
+  @apply text-lg font-bold text-secondary mb-1;
+}
+
+.contact-detail-content p {
+  @apply text-text-secondary;
+}
+
+/* ========================================
+   FORM WRAPPER
+======================================== */
+
+.contact-form-grid-wrapper {
+  @apply bg-surface-soft rounded-xl p-6 border border-border-light shadow-card;
+
+  @media (min-width: 1024px) {
+    @apply p-10;
+  }
+}
+
+/* ========================================
+   CONTACT FORM
+======================================== */
+
+.contact-form-grid label {
+  @apply block text-sm font-semibold text-secondary mb-2;
+}
+
+.contact-form-grid input[type='text'],
+.contact-form-grid input[type='email'],
+.contact-form-grid textarea {
+  @apply w-full rounded-md border border-border bg-white px-4 py-3 text-secondary outline-none transition-all;
+}
+
+.contact-form-grid input[type='text']:focus,
+.contact-form-grid input[type='email']:focus,
+.contact-form-grid textarea:focus {
+  @apply border-primary ring-2 ring-primary-soft;
+}
+
+.contact-form-grid textarea {
+  @apply resize-none min-h-32;
+}
+
+/* ========================================
+   SUBMIT BUTTON
+======================================== */
+
+.contact-form-grid .submit-button-wrapper {
+  @apply mt-2;
+}
+
+.contact-form-grid .btn-primary,
+.contact-form-grid input[type='submit'] {
+  @apply inline-flex items-center justify-center gap-3
+         rounded-full px-8 py-4
+         font-semibold text-white!
+         bg-primary shadow-button
+         transition duration-300 cursor-pointer
+         border-none outline-none;
+}
+
+.contact-form-grid .btn-primary:hover,
+.contact-form-grid input[type='submit']:hover {
+  @apply bg-primary-dark;
+}
+
+/* ========================================
+   CONTACT FORM 7 STATES
+======================================== */
+
+.contact-form-grid .wpcf7-not-valid-tip {
+  @apply text-danger text-xs mt-1 font-medium;
+}
+
+.contact-form-grid .wpcf7-response-output {
+  @apply mt-6 p-4 rounded-xl text-sm font-medium border-0! m-0!;
+}
+
+.contact-form-grid .wpcf7-mail-sent-ok {
+  @apply bg-success/10 text-success border border-success/20!;
+}
+
+.contact-form-grid .wpcf7-validation-errors {
+  @apply bg-danger/10 text-danger border border-danger/20!;
+}
+
+/* ========================================
+   REAL-TIME VALIDATION
+======================================== */
+
+.input-error {
+  @apply border-danger!;
+}
+
+.input-error:focus {
+  @apply ring-danger/20!;
+}
+
+/* ========================================
+   DESKTOP LAYOUT (1092+)
+======================================== */
+
+@media (min-width: 1092px) {
+  .contact-grid {
+    @apply items-stretch;
+  }
+
+  .contact-form-grid-wrapper {
+    @apply h-full flex flex-col;
+  }
+
+  .contact-form-grid {
+    @apply grid grid-cols-2 gap-x-6 gap-y-6 h-full;
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .contact-form-grid .field-group {
+    @apply mb-4 lg:mb-8;
+  }
+  /* Nombre */
+
+  .contact-form-grid .field-group:nth-child(1) {
+    @apply col-span-1;
+  }
+
+  /* Email */
+
+  .contact-form-grid .field-group:nth-child(2) {
+    @apply col-span-1;
+  }
+
+  /* Mensaje */
+
+  .contact-form-grid .field-group:nth-child(3) {
+    @apply col-span-2 h-full;
+  }
+
+  .contact-form-grid .field-group:nth-child(3) p {
+    @apply flex flex-col h-full;
+  }
+
+  .contact-form-grid .field-group:nth-child(3) .wpcf7-form-control-wrap {
+    @apply flex-1;
+  }
+
+  .contact-form-grid textarea {
+    @apply h-full min-h-55;
+  }
+
+  /* Botón */
+
+  .contact-form-grid .submit-button-wrapper {
+    @apply col-span-2 mt-0;
+  }
+
+  /* Mensajes de CF7 */
+
+  .contact-form-grid .wpcf7-response-output {
+    @apply col-span-2;
+  }
+}

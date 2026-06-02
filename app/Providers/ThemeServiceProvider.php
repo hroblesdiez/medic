@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Roots\Acorn\Sage\SageServiceProvider;
 
+
 class ThemeServiceProvider extends SageServiceProvider
 {
     /**
@@ -28,6 +29,9 @@ class ThemeServiceProvider extends SageServiceProvider
         (new \App\Services\DoctorSpecialitySync())->register();
         (new \App\Services\DoctorApi())->register();
         (new \App\Services\PostApi())->register();
+        (new \App\Services\AvailabilityApi())->register();
+        (new \App\Api\AppointmentsApi())->register();
+        (new \App\Services\Appointments\AppointmentFormListener())->register();
         if ($this->app->runningInConsole()) {
             $this->commands([
                 \App\Console\Commands\PopulateTestimonials::class,

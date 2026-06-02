@@ -101,3 +101,12 @@ add_filter('wp_nav_menu_objects', function ($items, $args) {
 
     return $items;
 }, 10, 2);
+
+/**
+ * Show all specialities on the archive page.
+ */
+add_action('pre_get_posts', function ($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_post_type_archive('speciality')) {
+        $query->set('posts_per_page', -1);
+    }
+});

@@ -1,75 +1,36 @@
 @props([
-'href' => '#',
-'variant' => 'primary',
-'size' => 'md',
-'icon' => true,
+  'href' => '#',
+  'variant' => 'primary',
+  'size' => 'md',
+  'icon' => true,
 ])
 
 @php
+  $variantClasses = [
+    'primary'   => 'btn-primary',
+    'secondary' => 'btn-secondary',
+    'outline'   => 'btn-outline',
+    'white'     => 'btn-white',
+  ];
 
-$baseClasses = '
-inline-flex items-center justify-center gap-3
-rounded-full
-font-semibold
-transition duration-300
-focus:outline-none
-max-w-50
-';
+  $sizeClasses = [
+    'sm' => 'btn-sm',
+    'md' => 'btn-md',
+    'lg' => 'btn-lg',
+  ];
 
-$variants = [
-'primary' => '
-bg-primary
-text-white!
-hover:bg-primary-dark
-',
-
-'secondary' => '
-bg-primary-soft
-text-primary
-hover:bg-primary
-hover:text-white
-',
-
-'outline' => '
-border border-primary
-text-primary
-hover:bg-primary
-hover:text-white
-',
-
-'white' => '
-bg-white
-text-slate-900
-hover:bg-slate-100
-',
-];
-
-$sizes = [
-'sm' => 'px-4 py-2 text-sm',
-'md' => 'px-6 py-3 text-base',
-'lg' => 'px-8 py-4 text-lg',
-];
-
+  $classes = 'btn ' . ($variantClasses[$variant] ?? 'btn-primary') . ' ' . ($sizeClasses[$size] ?? 'btn-md');
 @endphp
 
 <a
   href="{{ $href }}"
-  {{ $attributes->merge([
-    'class' =>
-      $baseClasses .
-      ' ' .
-      $variants[$variant] .
-      ' ' .
-      $sizes[$size]
-  ]) }}>
+  {{ $attributes->merge(['class' => $classes]) }}>
 
   @if($icon)
-
-  <img
-    class="h-5 w-5 shrink-0"
-    src="{{ Vite::asset('resources/images/user-tick.svg') }}"
-    alt="Icon">
-
+    <img
+      class="h-5 w-5 shrink-0"
+      src="{{ Vite::asset('resources/images/user-tick.svg') }}"
+      alt="Icon">
   @endif
 
   <span>

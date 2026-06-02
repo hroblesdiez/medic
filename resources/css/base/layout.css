@@ -1,0 +1,36 @@
+@utility section-container {
+  @apply py-4 lg:py-8 overflow-hidden;
+}
+
+@utility content-container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility section-subtitle {
+  @apply mb-4 inline-block text-md font-semibold tracking-wider text-primary;
+}
+
+@utility section-title {
+  @apply mb-6!;
+}
+
+@utility section-description {
+  @apply mb-6! text-base leading-8 text-slate-600;
+}
+
+@utility section-header-center {
+  @apply mx-auto mb-14 max-w-2xl text-center;
+}
+
+/* Grids */
+@utility grid-2-cols {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center;
+}
+
+@utility grid-3-cols {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+@utility grid-4-cols {
+  @apply grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4;
+}

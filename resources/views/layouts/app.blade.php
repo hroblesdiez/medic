@@ -7,6 +7,14 @@
     @php(wp_head())
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @if($defaultHeroImage)
+      <style>
+        :root {
+          --hero-default-image: url('{{ $defaultHeroImage }}');
+        }
+      </style>
+    @endif
   </head>
 
   <body @php(body_class())>

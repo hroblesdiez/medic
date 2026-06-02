@@ -1,0 +1,53 @@
+.btn {
+  @apply inline-flex items-center justify-center gap-3 rounded-full font-semibold transition duration-300;
+
+  &:focus {
+    @apply outline-none;
+  }
+}
+
+/* Variants */
+.btn-primary {
+  @apply bg-primary text-white! shadow-[var(--shadow-button)];
+
+  &:hover {
+    @apply bg-primary-dark;
+  }
+}
+
+.btn-secondary {
+  @apply bg-primary-soft text-primary z-50;
+
+  &:hover {
+    @apply bg-primary text-white;
+  }
+}
+
+.btn-outline {
+  @apply border border-primary text-primary;
+
+  &:hover {
+    @apply bg-primary text-white;
+  }
+}
+
+.btn-white {
+  @apply bg-white text-slate-900;
+
+  &:hover {
+    @apply bg-slate-100;
+  }
+}
+
+/* Sizes */
+.btn-sm {
+  @apply px-4 py-2 text-sm;
+}
+
+.btn-md {
+  @apply px-6 py-3 text-base;
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-lg;
+}

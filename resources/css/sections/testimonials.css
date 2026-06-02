@@ -1,14 +1,27 @@
 .testimonials-section {
   background-image: url('../../images/testimonials-background.png');
-  @apply flex items-center py-10 relative bg-cover bg-center bg-no-repeat overflow-hidden lg:h-85 lg:max-h-85;
+  @apply flex items-center py-12 relative bg-cover bg-center bg-no-repeat overflow-hidden;
+
+  @media (min-width: 1024px) {
+    @apply py-0 h-85 max-h-85;
+  }
 }
 
-/* WRAPPER */
+/* OUTER WRAPPER (con padding para las flechas) */
+.testimonials-slider-wrapper {
+  @apply relative mx-auto w-full max-w-7xl px-4;
+
+  @media (min-width: 1024px) {
+    @apply px-16; /* Espacio para que las flechas no corten por overflow */
+  }
+}
+
+/* INNER CONTAINER (el que tiene overflow:hidden para el slider) */
 .testimonials-slider-container {
   @apply relative w-full overflow-hidden;
 }
 
-/* TRACK (movimiento real del slider) */
+/* TRACK */
 .testimonials-track {
   @apply flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)];
   will-change: transform;
@@ -16,29 +29,41 @@
 
 /* SLIDE */
 .testimonial-slide {
-  @apply min-w-full flex items-center;
+  @apply min-w-full flex items-center py-4;
 }
 
 /* IMAGE */
-.testimonial-image-container img {
-  @apply w-55 h-55 rounded-full object-cover;
+.testimonial-image-container {
+  @apply shrink-0 mb-6 lg:mb-0;
 }
 
-/* TEXTOS */
+.testimonial-image-container img {
+  @apply w-32 h-32 md:w-44 md:h-44 lg:w-55 lg:h-55 rounded-full object-cover shadow-2xl mx-auto;
+}
+
+.testimonial-image-placeholder {
+  @apply w-32 h-32 md:w-44 md:h-44 lg:w-55 lg:h-55 bg-slate-200 rounded-full mx-auto shadow-lg;
+}
+
+/* CONTENT */
+.testimonial-content {
+  @apply grow text-center lg:text-left px-4 md:px-12 lg:px-0;
+}
+
 .testimonial-subtitle {
-  @apply text-primary-light font-semibold uppercase mb-2 block;
+  @apply section-subtitle mb-2;
 }
 
 .testimonial-title {
-  @apply mb-6 text-4xl lg:text-5xl font-bold leading-tight text-secondary;
+  @apply section-title text-2xl md:text-3xl lg:text-5xl leading-tight text-secondary lg:mb-6;
 }
 
 .testimonial-text {
-  @apply italic mb-4 text-secondary;
+  @apply italic mb-6 lg:mb-8 text-secondary text-base md:text-lg lg:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed opacity-90;
 }
 
 .testimonial-author {
-  @apply font-bold text-secondary;
+  @apply font-bold text-secondary text-base md:text-lg;
 }
 
 .testimonial-city {
@@ -47,19 +72,31 @@
 
 /* NAV ARROWS */
 .testimonial-arrow {
-  @apply absolute top-1/2 -translate-y-1/2 w-10 h-10 bg-white/50 border-0 rounded-full cursor-pointer flex items-center justify-center transition-colors duration-300 z-10 text-primary;
-}
+  @apply absolute top-1/2  w-10 h-10 bg-white/80 backdrop-blur-sm border-0 rounded-full cursor-pointer flex items-center justify-center transition-colors duration-300 z-20 text-primary shadow-lg;
 
-.testimonial-arrow:hover {
-  @apply bg-white/80;
+  &:hover {
+    @apply bg-white;
+  }
+
+  @media (max-width: 639px) {
+    @apply hidden;
+  }
 }
 
 .testimonial-arrow-prev {
-  @apply left-2 lg:left-4;
+  @apply left-4;
+
+  @media (min-width: 1024px) {
+    @apply -left-0;
+  }
 }
 
 .testimonial-arrow-next {
-  @apply right-2 lg:right-4;
+  @apply right-4;
+
+  @media (min-width: 1024px) {
+    @apply -right-0;
+  }
 }
 
 .testimonial-arrow svg {

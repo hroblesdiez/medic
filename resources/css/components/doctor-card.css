@@ -1,0 +1,131 @@
+.doctor-card {
+  @apply bg-white
+         rounded-[var(--radius-xl)]
+         shadow-[var(--shadow-card)]
+         border
+         border-[var(--color-border-light)]
+         overflow-hidden
+         hover:shadow-lg
+         hover:-translate-y-1
+         transition-all
+         duration-300
+         flex
+         flex-col
+         h-[430px];
+}
+
+.doctor-card__image-container {
+  @apply relative
+         h-52
+         bg-[var(--color-surface-muted)]
+         overflow-hidden
+         shrink-0;
+}
+
+.doctor-card__image {
+  @apply w-full
+         h-full
+         object-cover
+         object-top
+         transition-transform
+         duration-700
+         ease-out;
+
+  .doctor-card:hover & {
+    @apply scale-110;
+  }
+}
+
+.doctor-card__price {
+  @apply absolute
+         bottom-4
+         left-4
+         bg-accent-orange
+         text-white!
+         px-3.5
+         py-1.5
+         rounded-lg
+         text-sm
+         font-bold
+         shadow-lg;
+}
+
+.doctor-card__content {
+  @apply p-5
+         flex
+         flex-col
+         grow;
+}
+
+.doctor-card__badge {
+  @apply text-[10px]
+         font-bold
+         text-[var(--color-primary)]
+         bg-[var(--color-primary-soft)]
+         px-2.5
+         py-1
+         rounded-md
+         uppercase
+         tracking-wider;
+}
+
+.doctor-card__title {
+  @apply text-lg
+         font-bold
+         text-[var(--color-text-primary)]
+         mb-1
+         leading-tight
+         transition-colors;
+
+  .doctor-card:hover & {
+    @apply text-primary;
+  }
+}
+
+.doctor-card__info {
+  @apply flex
+         items-start
+         text-[var(--color-text-secondary)]
+         text-sm
+         leading-relaxed;
+}
+
+.doctor-card__icon {
+  @apply w-4
+         h-4
+         mr-2
+         mt-0.5
+         shrink-0
+         text-[var(--color-primary)];
+}
+
+.doctor-card__button {
+  @apply w-full
+         flex
+         items-center
+         justify-center
+         gap-2
+         py-3
+         bg-primary
+         text-white!
+         text-sm
+         font-bold
+         rounded-[var(--radius-pill)]
+         shadow-[var(--shadow-button)]
+         hover:bg-primary-dark
+         transition-all
+         duration-300;
+}
+
+.doctor-card {
+  @apply relative;
+}
+
+/* evita que elementos internos hereden clicks raros */
+.doctor-card * {
+  @apply cursor-auto;
+}
+
+.doctor-card__button {
+  @apply cursor-pointer;
+}

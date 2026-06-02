@@ -18,6 +18,11 @@ class DoctorsFields
         Field::make('text', 'doctor_location'),
         Field::make('text', 'doctor_price'),
         Field::make('text', 'doctor_experience'),
+        Field::make('complex', 'doctor_availability')
+  ->add_fields([
+    Field::make('text', 'day'),
+    Field::make('text', 'hours')
+])
       ]);
   }
 }

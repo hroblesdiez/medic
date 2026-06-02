@@ -1,0 +1,89 @@
+/* Hamburger Icon (Medical Cross to X) */
+.hamburger .relative span {
+  @apply rounded-full;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+  @apply fixed inset-0 z-40 flex flex-col items-center justify-center bg-white px-6 transition-all duration-500 ease-in-out opacity-0 pointer-events-none invisible translate-y-10;
+
+  @media (min-width: 1024px) {
+    @apply hidden;
+  }
+
+  &.is-open {
+    @apply opacity-100 pointer-events-auto visible translate-y-0;
+  }
+
+  ul {
+    @apply flex w-full flex-col gap-4 text-center text-2xl font-semibold text-slate-900;
+
+    li a {
+      @apply block py-2 transition-colors;
+
+      &:hover {
+        @apply text-blue-600;
+      }
+    }
+  }
+}
+
+/* Submenu Styles */
+.menu-item-has-children {
+  @apply relative w-full;
+
+  & > a {
+    @apply flex items-center justify-center gap-2;
+
+    &::after {
+      content: '';
+      @apply inline-block w-2 h-2 border-r-2 border-b-2 border-current transition-transform duration-300 ml-2;
+      transform: rotate(45deg);
+    }
+  }
+
+  &.is-active > a::after {
+    transform: rotate(-135deg) translateY(4px);
+  }
+}
+
+.sub-menu {
+  @apply flex flex-col gap-2 overflow-hidden transition-all duration-500 ease-in-out;
+}
+
+/* Desktop Submenu */
+@media (min-width: 1024px) {
+  .menu-item-has-children {
+    @apply w-auto;
+
+    &:hover,
+    &:focus-within {
+      .sub-menu {
+        @apply flex opacity-100 visible translate-y-0;
+      }
+    }
+  }
+
+  .sub-menu {
+    @apply absolute left-1/2 top-full min-w-60 -translate-x-1/2 bg-white p-4 shadow-2xl opacity-0 invisible -translate-y-2 rounded-xl border border-slate-100;
+
+    li a {
+      @apply block py-2 px-4 rounded-lg text-base font-medium text-slate-700 transition-all;
+
+      &:hover {
+        @apply bg-blue-50 text-blue-700;
+      }
+    }
+  }
+}
+
+/* Mobile Submenu Accordion */
+@media (max-width: 1023px) {
+  .sub-menu {
+    @apply flex max-h-0 bg-slate-50 rounded-xl mx-auto w-full max-w-xs;
+  }
+
+  .sub-menu li a {
+    @apply text-lg font-medium py-3 text-slate-600;
+  }
+}
