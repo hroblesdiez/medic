@@ -60,77 +60,20 @@ collect(['setup', 'filters', 'Fields/OptionsPage', 'Fields/SpecialityFields', 'F
         }
     });
 
-add_action('save_post_doctor', function ($post_id) {
+// add_action('save_post_doctor', function ($post_id) {
 
-    $speciality = get_post_meta($post_id, 'speciality', true);
+//     $speciality = get_post_meta($post_id, 'speciality', true);
 
-    if (!$speciality) return;
+//     if (!$speciality) return;
 
-    $term = get_term_by('slug', $speciality, 'speciality_type');
+//     $term = get_term_by('slug', $speciality, 'speciality_type');
 
-    if (!$term) return;
+//     if (!$term) return;
 
-    wp_set_object_terms(
-        $post_id,
-        [$term->term_id],
-        'speciality_type',
-        false
-    );
-});
-
-// add_action('wp_loaded', function () {
-
-//     error_log('🚀 SYNC STARTED');
-
-//     $doctors = get_posts([
-//         'post_type' => 'doctors',
-//         'numberposts' => -1,
-//         'post_status' => 'publish',
-//     ]);
-
-//     error_log('📦 DOCTORS FOUND: ' . count($doctors));
-
-//     if (empty($doctors)) {
-//         error_log('❌ NO DOCTORS FOUND');
-//         return;
-//     }
-
-//     foreach ($doctors as $doctor) {
-
-//         error_log("➡️ Doctor ID: {$doctor->ID}");
-
-//         if (!function_exists('carbon_get_post_meta')) {
-//             error_log('❌ Carbon not available');
-//             return;
-//         }
-
-//         $speciality_slug = carbon_get_post_meta($doctor->ID, 'doctor_speciality');
-
-//         error_log("📌 META VALUE: " . print_r($speciality_slug, true));
-
-//         if (!$speciality_slug) {
-//             error_log("⚠️ EMPTY SPECIALITY for {$doctor->ID}");
-//             continue;
-//         }
-
-//         $term = get_term_by('slug', $speciality_slug, 'speciality_type');
-
-//         if (!$term) {
-//             error_log("❌ TERM NOT FOUND: {$speciality_slug}");
-//             continue;
-//         }
-
-//         $result = wp_set_object_terms(
-//             $doctor->ID,
-//             [$term->term_id],
-//             'speciality_type',
-//             false
-//         );
-
-//         if (is_wp_error($result)) {
-//             error_log("❌ ERROR assigning doctor {$doctor->ID}");
-//         } else {
-//             error_log("✅ ASSIGNED doctor {$doctor->ID} → {$speciality_slug}");
-//         }
-//     }
-// }, 20);
+//     wp_set_object_terms(
+//         $post_id,
+//         [$term->term_id],
+//         'speciality_type',
+//         false
+//     );
+// });

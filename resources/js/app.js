@@ -19,4 +19,19 @@ Alpine.data('doctorFilter', doctorFilter);
 Alpine.data('blogLoadMore', blogLoadMore);
 Alpine.data('appointmentForm', appointmentForm);
 
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.jQuery) {
+    jQuery(document).on('fluentform_submission_success', function (ev, data) {
+      const result = data?.response?.data?.result ?? {};
+
+      const event = new CustomEvent('appointment-success', {
+        detail: result,
+        bubbles: true,
+      });
+
+      window.dispatchEvent(event);
+    });
+  }
+});
+
 Alpine.start();

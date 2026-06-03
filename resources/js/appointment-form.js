@@ -3,16 +3,18 @@ export default function appointmentForm() {
     doctorId: null,
     slots: [],
     loadingSlots: false,
-
-    // STATE
     selectedSlot: null,
     email: null,
     date: null,
     name: null,
+    submitted: false,
+    summary: {
+      name: '',
+      doctor: '',
+      date: '',
+      time: '',
+    },
 
-    /**
-     * INIT
-     */
     async init() {
       const params = new URLSearchParams(window.location.search);
       this.doctorId = params.get('doctor');
@@ -22,22 +24,43 @@ export default function appointmentForm() {
         return;
       }
 
-      // Inject doctor_id into FluentForms hidden field
       const idField = document.querySelector('input[name="doctor_id"]');
       if (idField) idField.value = this.doctorId;
 
-      // Bind listeners
       this.bindEmailListener();
       this.bindDateSelector();
       this.bindFormSubmit();
 
-      // Load availability
+      window.addEventListener('appointment-success', (e) => {
+        console.log('[Alpine] appointment-success fired');
+        console.log('[Alpine] e.detail:', e.detail);
+        console.log(
+          '[Alpine] e.detail.appointment_summary:',
+          e.detail?.appointment_summary,
+        );
+
+        const response = e.detail;
+
+        if (!response?.appointment_summary) {
+          console.warn(
+            '[Alpine] appointment_summary missing — submitted will NOT be set',
+          );
+          return;
+        }
+
+        this.summary = response.appointment_summary;
+        this.submitted = true;
+
+        console.log('[Alpine] submitted set to true, summary:', this.summary);
+
+        this.$nextTick(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+
       await this.loadAvailability();
     },
 
-    /**
-     * LOAD SLOTS
-     */
     async loadAvailability() {
       const container = document.querySelector('#slots-container');
 
@@ -65,14 +88,12 @@ export default function appointmentForm() {
 
           btn.type = 'button';
           btn.innerText = slot;
-
           btn.className =
             'px-3 py-2 border rounded hover:bg-blue-600 hover:text-white';
 
           btn.addEventListener('click', () => {
             this.selectedSlot = slot;
 
-            // UI reset
             document
               .querySelectorAll('#slots-container button')
               .forEach((b) => b.classList.remove('bg-blue-600', 'text-white'));
@@ -90,60 +111,45 @@ export default function appointmentForm() {
       }
     },
 
-    /**
-     * EMAIL LISTENER
-     */
     bindEmailListener() {
       document.addEventListener('input', (e) => {
-        if (e.target && e.target.name === 'email') {
+        if (e.target?.name === 'email') {
           this.email = e.target.value;
         }
       });
     },
 
-    /**
-     * DATE LISTENER
-     */
     bindDateSelector() {
       document.addEventListener('change', (e) => {
-        if (e.target && e.target.name === 'datetime') {
+        if (e.target?.name === 'datetime') {
           this.date = e.target.value;
         }
       });
     },
 
-    /**
-     * SYNC ALL FIELDS
-     */
     syncFields() {
       this.email = document.querySelector('[name="email"]')?.value ?? null;
 
       const first =
         document.querySelector('[name="names[first_name]"]')?.value ?? '';
-
       const last =
         document.querySelector('[name="names[last_name]"]')?.value ?? '';
 
       this.name = `${first} ${last}`.trim();
-
       this.date = document.querySelector('[name="datetime"]')?.value ?? null;
 
-      // IMPORTANT: write slot into hidden field
       const slotField = document.querySelector('[name="slot_time"]');
       if (slotField) {
         slotField.value = this.selectedSlot;
       }
     },
 
-    /**
-     * FORM SUBMIT HOOK
-     */
     bindFormSubmit() {
       const form = document.querySelector('.fluentform');
 
       if (!form) return;
 
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', () => {
         this.syncFields();
       });
     },

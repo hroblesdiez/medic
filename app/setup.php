@@ -61,6 +61,16 @@ add_action('admin_head', function () {
     ])->toHtml();
 });
 
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script(
+        'theme-app',
+        Vite::asset('resources/js/app.js'),
+        ['jquery'],
+        null,
+        true
+    );
+});
+
 /**
  * Use the generated theme.json file.
  *

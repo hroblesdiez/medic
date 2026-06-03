@@ -24,4 +24,20 @@ class AppointmentRepository
       update_post_meta($id, '_' . $key, $value);
     }
   }
+
+  public function find(int $id): ?object
+  {
+    $post = get_post($id);
+    if (!$post || $post->post_type !== 'appointments') {
+      return null;
+    }
+
+    return (object) [
+      'id'     => $id,
+      'doctor' => get_the_title(get_post_meta($id, '_doctor_id', true)),
+      'date'   => get_post_meta($id, '_date', true),
+      'time'   => get_post_meta($id, '_time', true),
+      'name'   => get_post_meta($id, '_name', true),
+    ];
+  }
 }
