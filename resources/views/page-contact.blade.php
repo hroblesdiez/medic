@@ -61,7 +61,7 @@
       {{-- Right Column: Form --}}
       <div>
         <div class="contact-form-wrapper">
-          {!! do_shortcode('[contact-form-7 id="365" title="Contact Page Form" html_class="contact-form"]') !!}
+          {!! do_shortcode('[fluentform id="4"]') !!}
         </div>
       </div>
 

@@ -17,7 +17,9 @@ class AvailabilityApi
     register_rest_route('medic/v1', '/availability', [
       'methods' => 'GET',
       'callback' => [$this, 'getAvailability'],
-      'permission_callback' => '__return_true',
+      'permission_callback' => function () {
+        return true;
+      },
     ]);
   }
 

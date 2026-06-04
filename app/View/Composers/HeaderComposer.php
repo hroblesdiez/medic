@@ -41,7 +41,7 @@ class HeaderComposer extends Composer
     {
         return [
             'text' => ['Book an appointment', 'Book'],
-            'url' => '/contact',
+            'url' => home_url('/doctors'),
         ];
     }
 }

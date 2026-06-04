@@ -17,7 +17,9 @@ class DoctorApi
         register_rest_route('medic/v1', '/doctors', [
             'methods' => 'GET',
             'callback' => [$this, 'filterDoctors'],
-            'permission_callback' => '__return_true',
+            'permission_callback' => function () {
+                return true;
+            },
         ]);
     }
 

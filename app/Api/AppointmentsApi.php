@@ -28,7 +28,9 @@ class AppointmentsApi
     register_rest_route('medic/v1', '/appointments', [
       'methods' => 'POST',
       'callback' => [$this, 'store'],
-      'permission_callback' => '__return_true',
+      'permission_callback' => function () {
+        return true;
+      },
     ]);
   }
 

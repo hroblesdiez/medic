@@ -9,14 +9,14 @@
       {{-- Logo --}}
       <a href="{{ home_url('/') }}" class="relative z-50 shrink-0">
         @if($logo)
-          <img
-            src="{{ $logo }}"
-            alt="{{ $siteName }}"
-            class="h-12 w-auto">
+        <img
+          src="{{ $logo }}"
+          alt="{{ $siteName }}"
+          class="h-12 w-auto">
         @else
-          <span class="text-2xl font-bold text-secondary">
-            {{ $siteName }}
-          </span>
+        <span class="text-2xl font-bold text-secondary">
+          {{ $siteName }}
+        </span>
         @endif
       </a>
 
@@ -33,7 +33,7 @@
           href="{{ $cta['url'] }}"
           variant="primary"
           size="md"
-          class="z-50 !max-w-none">
+          class="z-50 max-w-none">
           <span class="md:hidden">{{ $cta['text'][1] }}</span>
           <span class="hidden md:inline">{{ $cta['text'][0] }}</span>
         </x-button>

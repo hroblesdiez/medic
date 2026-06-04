@@ -26,8 +26,8 @@ $booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
     @if($thumbnail)
     <img src="{{ $thumbnail }}" alt="{{ esc_attr($doctor->post_title) }}" class="doctor-card__image">
     @else
-    <div class="w-full h-full flex items-center justify-center bg-[var(--color-primary-soft)]">
-      <svg class="w-16 h-16 text-[var(--color-primary-light)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div class="w-full h-full flex items-center justify-center bg-primary-soft">
+      <svg class="w-16 h-16 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
       </svg>
     </div>
@@ -89,7 +89,7 @@ $booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
       </div>
     </div>
 
-    {{-- CTA BUTTON (FIX CRÍTICO) --}}
+    {{-- CTA BUTTON --}}
     <div class="mt-auto">
 
       <a

@@ -98,6 +98,44 @@
   @apply resize-none min-h-32;
 }
 
+.contact-form-wrapper {
+  .ff-el-form-control {
+    @apply w-full rounded-xl border border-gray-200 px-4 py-3 text-base transition-all duration-200;
+  }
+
+  .ff-el-form-control:focus {
+    @apply border-primary ring-0 outline-none;
+  }
+
+  textarea.ff-el-form-control {
+    @apply min-h-40;
+  }
+
+  .ff-btn-submit {
+    @apply w-full rounded-xl px-6 py-4 font-semibold transition-all duration-200;
+  }
+
+  .ff-btn-submit:hover {
+    @apply opacity-90;
+  }
+
+  .ff-el-input--label {
+    @apply mb-2 font-medium text-gray-700;
+  }
+
+  .ff-message-success {
+    @apply rounded-xl border border-green-200 bg-green-50 p-4 text-green-700;
+  }
+
+  .ff-message-error {
+    @apply rounded-xl border border-red-200 bg-red-50 p-4 text-red-700;
+  }
+
+  .text-danger {
+    @apply mt-1 text-sm text-red-500;
+  }
+}
+
 /* ========================================
    SUBMIT BUTTON
 ======================================== */
@@ -119,26 +157,6 @@
 .contact-form-grid .btn-primary:hover,
 .contact-form-grid input[type='submit']:hover {
   @apply bg-primary-dark;
-}
-
-/* ========================================
-   CONTACT FORM 7 STATES
-======================================== */
-
-.contact-form-grid .wpcf7-not-valid-tip {
-  @apply text-danger text-xs mt-1 font-medium;
-}
-
-.contact-form-grid .wpcf7-response-output {
-  @apply mt-6 p-4 rounded-xl text-sm font-medium border-0! m-0!;
-}
-
-.contact-form-grid .wpcf7-mail-sent-ok {
-  @apply bg-success/10 text-success border border-success/20!;
-}
-
-.contact-form-grid .wpcf7-validation-errors {
-  @apply bg-danger/10 text-danger border border-danger/20!;
 }
 
 /* ========================================
@@ -196,10 +214,6 @@
     @apply flex flex-col h-full;
   }
 
-  .contact-form-grid .field-group:nth-child(3) .wpcf7-form-control-wrap {
-    @apply flex-1;
-  }
-
   .contact-form-grid textarea {
     @apply h-full min-h-55;
   }
@@ -208,11 +222,5 @@
 
   .contact-form-grid .submit-button-wrapper {
     @apply col-span-2 mt-0;
-  }
-
-  /* Mensajes de CF7 */
-
-  .contact-form-grid .wpcf7-response-output {
-    @apply col-span-2;
   }
 }

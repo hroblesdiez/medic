@@ -1,0 +1,91 @@
+.booking-section {
+  @apply py-16 bg-surface-soft min-h-screen;
+}
+
+.booking-wrapper {
+  @apply max-w-3xl mx-auto;
+}
+
+.booking-card {
+  @apply bg-white rounded-3xl shadow-soft p-8;
+}
+
+/* Doctor Information */
+.doctor-info-card {
+  @apply mb-8 rounded-xl bg-primary-soft p-6 border border-border-light;
+}
+
+.doctor-info-label {
+  @apply text-sm text-text-secondary;
+}
+
+.doctor-info-name {
+  @apply mt-2 text-xl font-bold text-text-primary;
+}
+
+.doctor-info-sub {
+  @apply text-xs text-text-muted mt-1;
+}
+
+/* Alerts */
+.alert-no-doctor {
+  @apply mb-8 rounded-xl bg-yellow-50 p-6 border border-yellow-200;
+}
+
+.alert-no-doctor-text {
+  @apply text-sm text-yellow-700 font-medium;
+}
+
+/* Success Card */
+.success-container {
+  @apply py-4;
+}
+
+.success-icon-wrapper {
+  @apply flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6 mx-auto;
+}
+
+.success-icon {
+  @apply w-8 h-8 text-green-600;
+}
+
+.success-header {
+  @apply text-center mb-10;
+}
+
+.success-title {
+  @apply text-3xl font-bold tracking-tight text-text-primary;
+}
+
+.success-message {
+  @apply mt-3 text-lg text-text-secondary;
+}
+
+.success-summary {
+  @apply bg-surface-muted rounded-2xl p-6 space-y-4 border border-border-light;
+}
+
+.summary-item {
+  @apply flex justify-between items-center py-2 border-b border-border-light/50;
+
+  &:last-child {
+    @apply border-b-0;
+  }
+}
+
+.summary-label {
+  @apply text-sm text-text-muted uppercase font-bold tracking-wider;
+}
+
+.summary-value {
+  @apply text-base font-semibold text-text-primary;
+}
+
+/* Actions */
+.booking-actions {
+  @apply mt-10 text-center;
+}
+
+.btn-booking {
+  @apply w-full md:w-auto md:min-w-[320px] py-4 px-8 bg-secondary text-white rounded-xl font-bold hover:bg-secondary-dark transition-all cursor-pointer shadow-soft;
+}

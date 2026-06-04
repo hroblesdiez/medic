@@ -17,7 +17,9 @@ class PostApi
         register_rest_route('medic/v1', '/posts', [
             'methods' => 'GET',
             'callback' => [$this, 'getPosts'],
-            'permission_callback' => '__return_true',
+            'permission_callback' => function () {
+                return true;
+            },
         ]);
     }
 
