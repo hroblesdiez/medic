@@ -54,12 +54,6 @@ export default function appointmentForm() {
 
     /**
      * FLATPICKR MIN DATE / TIME
-     *
-     * FluentForms initializes Flatpickr after the DOM is ready but the exact
-     * moment is not exposed via a reliable event, so we poll until the instance
-     * is attached to the input element (_flatpickr property set by the library).
-     * Once found we apply minDate and a dynamic minTime that resets whenever
-     * the user picks today vs a future date.
      */
     bindFlatpickrMinDate() {
       const MAX_ATTEMPTS = 40;
@@ -126,40 +120,82 @@ export default function appointmentForm() {
         const data = await response.json();
         this.slots = data.slots || [];
 
-        container.innerHTML = '';
-
-        if (!this.slots.length) {
-          container.innerHTML = `<p>No available slots</p>`;
-          return;
-        }
-
-        this.slots.forEach((slot) => {
-          const btn = document.createElement('button');
-
-          btn.type = 'button';
-          btn.innerText = slot;
-
-          btn.className =
-            'px-3 py-2 border rounded hover:bg-blue-600 hover:text-white';
-
-          btn.addEventListener('click', () => {
-            this.selectedSlot = slot;
-
-            document
-              .querySelectorAll('#slots-container button')
-              .forEach((b) => b.classList.remove('bg-blue-600', 'text-white'));
-
-            btn.classList.add('bg-blue-600', 'text-white');
-          });
-
-          container.appendChild(btn);
-        });
+        this.renderSlots();
       } catch (err) {
         console.error(err);
-        container.innerHTML = `<p>Error loading slots</p>`;
+        const container = document.querySelector('#slots-container');
+        if (container) container.innerHTML = `<p>Error loading slots</p>`;
       } finally {
         this.loadingSlots = false;
       }
+    },
+
+    /**
+     * RENDER SLOTS
+     *
+     * Filters out past slots when the selected date is today.
+     * Slot format from the API is "HH:MM" (24h).
+     */
+    renderSlots() {
+      const container = document.querySelector('#slots-container');
+
+      if (!container) return;
+
+      container.innerHTML = '';
+      this.selectedSlot = null;
+
+      const now = new Date();
+      const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+      const isToday = (() => {
+        if (!this.date) return true;
+
+        // this.date comes from FluentForms as "d/m/Y H:i" or "d/m/Y"
+        const parts = this.date.split(' ')[0].split('/');
+        if (parts.length < 3) return true;
+
+        const [day, month, year] = parts.map(Number);
+        const selected = new Date(year, month - 1, day);
+
+        return (
+          selected.getFullYear() === now.getFullYear() &&
+          selected.getMonth() === now.getMonth() &&
+          selected.getDate() === now.getDate()
+        );
+      })();
+
+      const visible = isToday
+        ? this.slots.filter((slot) => {
+            const [h, m] = slot.split(':').map(Number);
+            return h * 60 + m > nowMinutes;
+          })
+        : this.slots;
+
+      if (!visible.length) {
+        container.innerHTML = `<p>No available slots</p>`;
+        return;
+      }
+
+      visible.forEach((slot) => {
+        const btn = document.createElement('button');
+
+        btn.type = 'button';
+        btn.innerText = slot;
+        btn.className =
+          'px-3 py-2 border rounded hover:bg-blue-600 hover:text-white';
+
+        btn.addEventListener('click', () => {
+          this.selectedSlot = slot;
+
+          document
+            .querySelectorAll('#slots-container button')
+            .forEach((b) => b.classList.remove('bg-blue-600', 'text-white'));
+
+          btn.classList.add('bg-blue-600', 'text-white');
+        });
+
+        container.appendChild(btn);
+      });
     },
 
     /**
@@ -175,11 +211,13 @@ export default function appointmentForm() {
 
     /**
      * DATE LISTENER
+     * Re-renders slots every time the date changes so the filter stays current.
      */
     bindDateSelector() {
       document.addEventListener('change', (e) => {
         if (e.target && e.target.name === 'datetime') {
           this.date = e.target.value;
+          this.renderSlots();
         }
       });
     },
