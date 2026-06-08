@@ -50,7 +50,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters', 'Fields/OptionsPage', 'Fields/SpecialityFields', 'Fields/DoctorsFields', 'Fields/TestimonialsFields'])
+collect(['setup', 'filters', 'admin', 'Fields/OptionsPage', 'Fields/SpecialityFields', 'Fields/DoctorsFields', 'Fields/TestimonialsFields'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
