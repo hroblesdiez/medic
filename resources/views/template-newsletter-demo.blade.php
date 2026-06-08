@@ -10,17 +10,16 @@ $email = sanitize_email(request()->query('email', ''));
 $validEmail = !empty($email) && is_email($email);
 @endphp
 
-<section class="bg-gray-50 py-20">
-  <div class="container mx-auto max-w-3xl px-6">
+<section class="newsletter-page">
+  <div class="newsletter-container">
 
-    <div class="rounded-2xl bg-white p-8 shadow-sm md:p-12">
+    <div class="newsletter-card">
 
       @if($validEmail)
 
-      <div class="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+      <div class="newsletter-success-icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor">
@@ -32,71 +31,71 @@ $validEmail = !empty($email) && is_email($email);
         </svg>
       </div>
 
-      <h1 class="mb-4 text-4xl font-bold">
+      <h1 class="newsletter-title">
         Thanks for subscribing!
       </h1>
 
-      <p class="mb-6 text-lg text-gray-600">
+      <p class="newsletter-text">
         Subscription requested for:
       </p>
 
-      <div class="mb-8 rounded-lg bg-gray-100 p-4 font-medium break-all">
+      <div class="newsletter-email-box">
         {{ esc_html($email) }}
       </div>
 
       @else
 
-      <h1 class="mb-4 text-4xl font-bold">
+      <h1 class="newsletter-title">
         Invalid email address
       </h1>
 
-      <p class="mb-8 text-gray-600">
+      <p class="newsletter-text">
         Please return to the homepage and enter a valid email address.
       </p>
 
       @endif
 
-      <div class="border-t pt-8!">
+      <div class="newsletter-notice">
 
-        <h2 class="mb-4! text-2xl font-semibold">
+        <h2 class="newsletter-notice-title">
           Portfolio Project Notice
         </h2>
 
-        <p class="mb-6! text-gray-600">
+        <p class="newsletter-notice-text">
           This newsletter feature is part of a portfolio project built with
           WordPress, Sage 11, Tailwind CSS and a Laravel-inspired architecture.
         </p>
 
-        <p class="mb-8! text-gray-600">
+        <p class="newsletter-notice-text--last">
           No emails are sent, no personal data is stored and your submission
           has not been recorded. The purpose of this feature is to demonstrate
           frontend and backend development capabilities.
         </p>
 
-        <div class="grid gap-4 sm:grid-cols-2">
+        <div class="newsletter-features-grid">
 
-          <div class="rounded-lg border p-4">
+          <div class="newsletter-feature-item">
             ✓ Form validation
           </div>
 
-          <div class="rounded-lg border p-4">
+          <div class="newsletter-feature-item">
             ✓ Accessible UI
           </div>
 
-          <div class="rounded-lg border p-4">
+          <div class="newsletter-feature-item">
             ✓ Responsive design
           </div>
 
-          <div class="rounded-lg border p-4">
+          <div class="newsletter-feature-item">
             ✓ Portfolio demonstration
           </div>
 
         </div>
 
-        <div class="mt-10!">
+        <div class="newsletter-footer">
           <a
             href="{{ home_url('/') }}"
-            class="inline-flex rounded-lg bg-primary px-6 py-3 font-semibold text-white transition hover:opacity-90">
+            class="newsletter-button">
             Return to Homepage
           </a>
         </div>

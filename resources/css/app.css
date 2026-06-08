@@ -23,6 +23,8 @@
 @import './sections/booking.css';
 @import './sections/speciality-single.css';
 @import './sections/doctor-single.css';
+@import './sections/appointments.css';
+@import './sections/newsletter.css';
 @import './components/speciality-card.css';
 
 [x-cloak] {
