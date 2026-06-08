@@ -60,7 +60,7 @@ add_filter('wp_nav_menu_objects', function ($items, $args) {
         $has_active_child = false;
         foreach ($specialities as $speciality) {
             $is_current = (get_queried_object_id() === $speciality->ID && is_singular('speciality'));
-            
+
             $new_item = new \stdClass();
             $new_item->ID = 1000000 + $speciality->ID; // High ID to avoid conflicts
             $new_item->db_id = $new_item->ID;
@@ -80,7 +80,7 @@ add_filter('wp_nav_menu_objects', function ($items, $args) {
             $new_item->description = '';
             $new_item->xfn = '';
             $new_item->status = 'publish';
-            
+
             // Fix: Add properties expected by Walker_Nav_Menu
             $new_item->current = $is_current;
             $new_item->current_item_ancestor = false;
@@ -110,3 +110,15 @@ add_action('pre_get_posts', function ($query) {
         $query->set('posts_per_page', -1);
     }
 });
+
+/**
+ * Exclude specific pages from the Rank Math sitemap by ID
+ */
+add_filter('rank_math/sitemap/entry', function ($url, $type, $post) {
+    $excluded_ids = [38, 66, 377];
+
+    if ($type === 'post' && in_array($post->ID, $excluded_ids)) {
+        return false;
+    }
+    return $url;
+}, 10, 3);

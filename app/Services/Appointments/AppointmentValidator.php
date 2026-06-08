@@ -14,19 +14,19 @@ class AppointmentValidator
       'meta_query' => [
         'relation' => 'AND',
         [
-          'key' => 'doctor_id',
+          'key' => '_doctor_id',
           'value' => $doctorId,
         ],
         [
-          'key' => 'date',
+          'key' => '_date',
           'value' => $date,
         ],
         [
-          'key' => 'time',
+          'key' => '_time',
           'value' => $time,
         ],
         [
-          'key' => 'status',
+          'key' => '_status',
           'value' => ['cancelled'],
           'compare' => 'NOT IN'
         ]

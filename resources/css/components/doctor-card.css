@@ -76,10 +76,10 @@
          mb-1
          leading-tight
          transition-colors;
+}
 
-  .doctor-card:hover & {
-    @apply text-primary;
-  }
+.doctor-card__title a {
+  @apply cursor-pointer;
 }
 
 .doctor-card__info {

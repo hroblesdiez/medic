@@ -90,7 +90,7 @@ class AvailabilityApi
       'posts_per_page' => -1,
       'meta_query' => [
         [
-          'key' => 'doctor_id',
+          'key' => '_doctor_id',
           'value' => $doctorId,
           'compare' => '='
         ]
@@ -99,7 +99,7 @@ class AvailabilityApi
 
     if ($date) {
       $args['meta_query'][] = [
-        'key' => 'appointment_date',
+        'key' => '_date',
         'value' => $date,
         'compare' => '='
       ];
@@ -111,7 +111,7 @@ class AvailabilityApi
 
     if ($query->have_posts()) {
       foreach ($query->posts as $post) {
-        $time = get_post_meta($post->ID, 'appointment_time', true);
+        $time = get_post_meta($post->ID, '_time', true);
         if ($time) {
           $booked[] = $time;
         }

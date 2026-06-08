@@ -7,6 +7,7 @@ import menu from './menu';
 import doctorFilter from './doctor-filter';
 import blogLoadMore from './blog-load-more';
 import appointmentForm from './appointment-form';
+import doctorAppointment from './doctor-appointment';
 
 window.Alpine = Alpine;
 
@@ -18,6 +19,7 @@ Alpine.data('menu', menu);
 Alpine.data('doctorFilter', doctorFilter);
 Alpine.data('blogLoadMore', blogLoadMore);
 Alpine.data('appointmentForm', appointmentForm);
+Alpine.data('doctorAppointment', doctorAppointment);
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.jQuery) {

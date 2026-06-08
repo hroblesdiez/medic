@@ -69,6 +69,10 @@ add_action('wp_enqueue_scripts', function () {
         null,
         true
     );
+
+    wp_localize_script('theme-app', 'medicConfig', [
+        'nonce' => wp_create_nonce('wp_rest'),
+    ]);
 });
 
 /**
