@@ -18,6 +18,7 @@ class DoctorsFields
         Field::make('text', 'doctor_location'),
         Field::make('text', 'doctor_price'),
         Field::make('text', 'doctor_experience'),
+        Field::make('checkbox', 'exclude_from_grid', __('Exclude from grid')),
         Field::make('complex', 'doctor_availability')
   ->add_fields([
     Field::make('text', 'day'),

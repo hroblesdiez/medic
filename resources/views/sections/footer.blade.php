@@ -33,19 +33,24 @@
           Subscribe and stay updated
         </p>
 
-        <form class="footer-newsletter__form">
+        <form
+          action="{{ home_url('/newsletter-demo/') }}"
+          method="GET"
+          class="footer-newsletter__form">
+
           <input
+            name="email"
             type="email"
+            required
             placeholder="Enter email address"
             class="footer-newsletter__input" />
 
-          <x-button
+          <button
             type="submit"
-            size="sm"
-            variant="primary"
-            :icon="false">
+            class="btn btn-primary btn-sm">
             Send
-          </x-button>
+          </button>
+
         </form>
 
         {{-- SOCIAL --}}
@@ -53,13 +58,13 @@
           <h5 class="text-sm font-bold text-secondary mb-4">Connect With Us</h5>
 
           <div class="flex gap-4">
-            <a href="#" class="transition-transform hover:scale-110">
+            <a href="https://www.facebook.com/" class="transition-transform hover:scale-110">
               <img
                 src="{{ Vite::asset('resources/images/social/facebook.svg') }}"
                 alt="Facebook"
                 class="w-8 h-8">
             </a>
-            <a href="#" class="transition-transform hover:scale-110">
+            <a href="https://x.com/" class="transition-transform hover:scale-110">
               <img
                 src="{{ Vite::asset('resources/images/social/twitter.svg') }}"
                 alt="X"
@@ -78,9 +83,9 @@
       <p>Copyright &copy; {{ date('Y') }} All rights reserved</p>
 
       <div class="main-footer__bottom-links">
-        <a href="#">Legal Notice</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Refund Policy</a>
+        <a href="{{ home_url('/') }}">Legal Notice</a>
+        <a href="{{ home_url('/') }}">Privacy Policy</a>
+        <a href="{{ home_url('/') }}">Refund Policy</a>
       </div>
 
     </div>

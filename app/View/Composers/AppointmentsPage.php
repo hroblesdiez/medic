@@ -5,7 +5,7 @@ namespace App\View\Composers;
 use Roots\Acorn\View\Composer;
 use WP_Query;
 
-class HomeDoctors extends Composer
+class AppointmentsPage extends Composer
 {
     /**
      * List of views served by this composer.
@@ -13,7 +13,7 @@ class HomeDoctors extends Composer
      * @var array
      */
     protected static $views = [
-        'partials.home.best-doctors',
+        'page-appointments',
     ];
 
     /**
@@ -24,39 +24,34 @@ class HomeDoctors extends Composer
     public function with()
     {
         return [
-            'doctors' => $this->get_best_doctors(),
+            'specialists' => $this->get_specialists(),
         ];
     }
 
     /**
-     * Get 4 random doctors from the CPT.
+     * Get the 4 specialists.
      *
      * @return array
      */
-    public function get_best_doctors()
+    public function get_specialists()
     {
         $args = [
             'post_type' => 'doctors',
             'posts_per_page' => 4,
-            'orderby' => 'rand',
             'post_status' => 'publish',
             'meta_query' => [
-                'relation' => 'OR',
                 [
                     'key' => '_exclude_from_grid',
                     'value' => 'yes',
-                    'compare' => '!=',
-                ],
-                [
-                    'key' => '_exclude_from_grid',
-                    'compare' => 'NOT EXISTS',
+                    'compare' => '=',
                 ],
             ],
+            'orderby' => 'ID',
+            'order' => 'ASC',
         ];
 
         $query = new WP_Query($args);
 
-        // Devolvemos directamente el array de objetos WP_Post
         return $query->posts;
     }
 }

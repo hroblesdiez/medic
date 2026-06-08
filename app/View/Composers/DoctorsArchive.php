@@ -45,6 +45,18 @@ class DoctorsArchive extends Composer
             'post_type' => 'doctors',
             'posts_per_page' => -1,
             'status' => 'publish',
+            'meta_query' => [
+                'relation' => 'OR',
+                [
+                    'key' => '_exclude_from_grid',
+                    'value' => 'yes',
+                    'compare' => '!=',
+                ],
+                [
+                    'key' => '_exclude_from_grid',
+                    'compare' => 'NOT EXISTS',
+                ],
+            ],
         ];
 
         if (is_tax('speciality_type')) {
