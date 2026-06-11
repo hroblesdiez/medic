@@ -43,8 +43,8 @@ class DoctorsArchive extends Composer
     {
         $args = [
             'post_type' => 'doctors',
-            'posts_per_page' => -1,
-            'status' => 'publish',
+            'posts_per_page' => 12,
+            'post_status' => 'publish',
             'meta_query' => [
                 'relation' => 'OR',
                 [

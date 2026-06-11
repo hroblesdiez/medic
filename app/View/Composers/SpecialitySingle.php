@@ -45,7 +45,7 @@ class SpecialitySingle extends Composer
             'post_type' => 'doctors',
             'posts_per_page' => 4,
             'post_status' => 'publish',
-            'meta_key' => '_doctor_experience', // Carbon Fields stores meta with underscore prefix by default, but carbon_get_post_meta handles it. WP_Query needs the actual key.
+            'meta_key' => '_doctor_years_experience',
             'orderby' => 'meta_value_num',
             'order' => 'DESC',
             'tax_query' => [

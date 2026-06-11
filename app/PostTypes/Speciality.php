@@ -16,11 +16,11 @@ class Speciality extends PostType
       'public' => true,
       'has_archive' => true,
       'rewrite' => [
-        'slug' => 'specialities',
+        'slug' => 'speciality',
         'with_front' => false,
       ],
       'menu_icon' => 'dashicons-heart',
-      'supports' => ['title', 'editor', 'thumbnail'],
+      'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
       'show_in_rest' => true,
     ];
   }

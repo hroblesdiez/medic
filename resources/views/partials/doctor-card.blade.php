@@ -5,7 +5,8 @@
 
 $location = carbon_get_post_meta($doctor->ID, 'doctor_location');
 $price = carbon_get_post_meta($doctor->ID, 'doctor_price');
-$experience = carbon_get_post_meta($doctor->ID, 'doctor_experience');
+$experience = carbon_get_post_meta($doctor->ID, 'doctor_years_experience');
+$slots = carbon_get_post_meta($doctor->ID, 'doctor_available_slots');
 
 $custom_image_id = carbon_get_post_meta($doctor->ID, 'doctor_icon');
 $thumbnail = $custom_image_id
@@ -86,11 +87,21 @@ $booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
         </div>
         @endif
 
+        @if($slots)
+        <div class="doctor-card__info">
+          <svg class="doctor-card__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>{{ $slots }}</span>
+        </div>
+        @endif
+
       </div>
     </div>
 
     {{-- CTA BUTTON --}}
-    <div class="mt-auto">
+    <div class="mt-auto text-center">
 
       <a
         href="{{ $booking_url }}"

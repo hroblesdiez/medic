@@ -1,3 +1,5 @@
+@props(['id', 'title', 'icon', 'authorId' => null])
+
 <a
   href="{{ get_permalink($id) }}"
   class="speciality-card">
@@ -11,6 +13,19 @@
       class="w-full h-full object-contain">
 
   </div>
+
+  {{-- AUTHOR PHOTO --}}
+  @if($authorId)
+  @php
+  $authorPhoto = carbon_get_user_meta($authorId, 'author_photo') ?: get_user_meta($authorId, 'author_photo', true);
+  if (!$authorPhoto) {
+      $authorPhoto = Vite::asset('resources/images/authors/author1.png');
+  }
+  @endphp
+  <div class="mb-4">
+      <img src="{{ $authorPhoto }}" alt="{{ get_the_author_meta('display_name', $authorId) }}" class="w-10 h-10 rounded-full object-cover">
+  </div>
+  @endif
 
   {{-- TITLE --}}
   <h3 class="text-xl font-semibold text-slate-900 mb-3">

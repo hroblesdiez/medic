@@ -20,7 +20,7 @@ class Doctors extends PostType
         'with_front' => false,
       ],
       'menu_icon' => 'dashicons-plus',
-      'supports' => ['title', 'editor', 'thumbnail'],
+      'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
       'show_in_rest' => true,
       'show_ui' => true,
     ];

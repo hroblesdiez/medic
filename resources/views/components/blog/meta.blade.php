@@ -2,7 +2,7 @@
 
 @php
 $authorId = $authorId ?? $post->post_author;
-$authorPhoto = carbon_get_user_meta($authorId, 'author_photo');
+$authorPhoto = carbon_get_user_meta($authorId, 'author_photo') ?: get_user_meta($authorId, 'author_photo', true);
 
 // Fallback if no photo is uploaded
 if (!$authorPhoto) {

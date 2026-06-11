@@ -61,18 +61,11 @@ add_action('admin_head', function () {
     ])->toHtml();
 });
 
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script(
-        'theme-app',
-        Vite::asset('resources/js/app.js'),
-        ['jquery'],
-        null,
-        true
-    );
-
-    wp_localize_script('theme-app', 'medicConfig', [
-        'nonce' => wp_create_nonce('wp_rest'),
-    ]);
+/**
+ * Inject medicConfig nonce inline before scripts load.
+ */
+add_action('wp_head', function () {
+    echo '<script>window.medicConfig = { nonce: "' . wp_create_nonce('wp_rest') . '" };</script>';
 });
 
 /**
@@ -240,14 +233,13 @@ add_action('widgets_init', function () {
 
 add_action('carbon_fields_theme_options_container_saved', function () {
     try {
-        // Ruta a la caché de vistas de Sage
         $storage_path = get_template_directory() . '/storage/framework/views';
 
         if (is_dir($storage_path)) {
             $files = glob($storage_path . '/*.php');
             foreach ($files as $file) {
                 if (is_file($file)) {
-                    unlink($file); // Borramos físicamente cada archivo de caché
+                    unlink($file);
                 }
             }
             error_log("Medic Debug: Caché de vistas limpiada correctamente tras guardar.");

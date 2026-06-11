@@ -9,15 +9,16 @@ class TestimonialsFields
 {
   public function register(): void
   {
-    Container::make('post_meta', __('Testimonial Data'))
-      ->where('post_type', '=', 'testimonials')
+    Container::make('post_meta', __('Testimonial Information'))
+      ->where('post_type', '=', 'testimonial')
       ->add_fields([
-        Field::make('image', 'testimonial_image', __('Image')),
-        Field::make('text', 'testimonial_subtitle', __('Subtitle')),
-        Field::make('text', 'testimonial_title', __('Title')),
-        Field::make('textarea', 'testimonial_text', __('Testimonial')),
-        Field::make('text', 'testimonial_name', __('Name')),
-        Field::make('text', 'testimonial_city', __('City')),
+        Field::make('text', 'testimonial_name', __('Patient Name')),
+        Field::make('text', 'testimonial_location', __('Patient Location')),
+        Field::make('rich_text', 'testimonial_text', __('Testimonial Text')),
+        Field::make('text', 'testimonial_rating', __('Rating (1-5)'))
+          ->set_attribute('type', 'number')
+          ->set_attribute('min', 1)
+          ->set_attribute('max', 5),
       ]);
   }
 }

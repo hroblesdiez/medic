@@ -6,22 +6,23 @@ class Testimonials extends PostType
 {
   public function name(): string
   {
-    return 'testimonials';
+    return 'testimonial';
   }
 
   public function args(): array
   {
     return [
       'label' => 'Testimonials',
-      'public' => true,
+      'public' => false,
       'has_archive' => false,
       'rewrite' => [
-        'slug' => 'testimonials',
+        'slug' => 'testimonial',
         'with_front' => false,
       ],
       'menu_icon' => 'dashicons-format-quote',
-      'supports' => ['title', 'editor', 'thumbnail'],
+      'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
       'show_in_rest' => true,
+      'show_ui' => true,
     ];
   }
 }

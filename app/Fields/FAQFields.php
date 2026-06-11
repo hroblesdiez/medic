@@ -9,11 +9,11 @@ class FAQFields
 {
   public function register(): void
   {
-    Container::make('post_meta', __('FAQ Data'))
+    Container::make('post_meta', __('FAQ Information'))
       ->where('post_type', '=', 'faq')
       ->add_fields([
         Field::make('text', 'faq_question', __('Question')),
-        Field::make('textarea', 'faq_response', __('Response')),
+        Field::make('rich_text', 'faq_answer', __('Answer')),
       ]);
   }
 }

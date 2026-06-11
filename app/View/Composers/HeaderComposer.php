@@ -19,22 +19,26 @@ class HeaderComposer extends Composer
         ];
     }
 
-    protected function logo(): string
+    public function logo(): string
     {
         $logo_id = carbon_get_theme_option('medic_logo');
 
-        return $logo_id
-            ? wp_get_attachment_image_url($logo_id, 'full')
-            : null;
+        if (!$logo_id) {
+            return '';
+        }
+
+        return wp_get_attachment_image_url($logo_id, 'full') ?: '';
     }
 
     protected function menu(): string
     {
-        return wp_nav_menu([
+        $menu = wp_nav_menu([
             'theme_location' => 'primary_navigation',
             'menu_class' => 'flex items-center gap-8',
             'echo' => false,
         ]);
+
+        return is_string($menu) ? $menu : '';
     }
 
     protected function cta(): array

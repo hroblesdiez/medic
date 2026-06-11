@@ -114,14 +114,12 @@
         </div>
 
         <div x-show="page < maxPages" class="mt-16 flex justify-center">
-          <x-button
+          <button
             @click="loadMore()"
-            ::disabled="loading"
-            variant="primary"
-            size="lg"
-            class="px-10">
+            :disabled="loading"
+            class="px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
             <span x-text="loading ? 'Loading...' : 'See more specialists'"></span>
-          </x-button>
+          </button>
         </div>
       </main>
     </div>

@@ -10,13 +10,12 @@
          transition-all
          duration-300
          flex
-         flex-col
-         h-[430px];
+         flex-col;
 }
 
 .doctor-card__image-container {
   @apply relative
-         h-52
+         aspect-square
          bg-[var(--color-surface-muted)]
          overflow-hidden
          shrink-0;
@@ -26,7 +25,7 @@
   @apply w-full
          h-full
          object-cover
-         object-top
+         object-[center_10%]
          transition-transform
          duration-700
          ease-out;
@@ -121,7 +120,7 @@
   @apply relative;
 }
 
-/* evita que elementos internos hereden clicks raros */
+
 .doctor-card * {
   @apply cursor-auto;
 }
@@ -129,3 +128,4 @@
 .doctor-card__button {
   @apply cursor-pointer;
 }
+

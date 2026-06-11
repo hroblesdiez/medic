@@ -1,7 +1,7 @@
 @props(['authorId'])
 
 @php
-  $authorPhoto = carbon_get_user_meta($authorId, 'author_photo');
+  $authorPhoto = carbon_get_user_meta($authorId, 'author_photo') ?: get_user_meta($authorId, 'author_photo', true);
   $displayName = get_the_author_meta('display_name', $authorId);
   $description = get_the_author_meta('description', $authorId);
 

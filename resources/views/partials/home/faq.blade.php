@@ -40,7 +40,7 @@
                 x-collapse
                 class="faq-answer">
                 <div class="faq-divider"></div>
-                {{ carbon_get_post_meta($faq->ID, 'faq_response') }}
+                {{ carbon_get_post_meta($faq->ID, 'faq_answer') }}
               </div>
             </div>
           @endforeach

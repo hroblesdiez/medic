@@ -35,13 +35,12 @@ class AppointmentFormListener
       return;
     }
 
-    $rawDatetime = trim($formData['datetime'] ?? '');
+    $rawDatetime = trim($formData['date'] ?? '');
 
     if ($rawDatetime && !$this->isDatetimeInFuture($rawDatetime)) {
       if (function_exists('wpFluent')) {
         wpFluent()->table('fluentform_submissions')->where('id', $entryId)->delete();
       }
-
       error_log('Medic: rejected past appointment submission for entry ' . $entryId);
       return;
     }
@@ -49,17 +48,22 @@ class AppointmentFormListener
     $repository = new AppointmentRepository();
     $service    = new AppointmentService($repository);
 
-    $postId = $service->create([
-      'doctor_id' => (int) ($formData['doctor_id'] ?? 0),
-      'date'      => $formData['datetime'] ?? '',
-      'time'      => $formData['slot_time'] ?? '',
-      'email'     => $formData['email'] ?? '',
-      'name'      => trim(
-        ($formData['names']['first_name'] ?? '') .
-          ' ' .
-          ($formData['names']['last_name'] ?? '')
-      ),
-    ]);
+    try {
+      $postId = $service->create([
+        'doctor_id' => (int) ($formData['doctor_id'] ?? 0),
+        'date'      => $formData['date'] ?? '',
+        'time'      => $formData['time'] ?? '',
+        'email'     => $formData['email'] ?? '',
+        'name'      => trim(
+          ($formData['names']['first_name'] ?? '') .
+            ' ' .
+            ($formData['names']['last_name'] ?? '')
+        ),
+      ]);
+    } catch (\RuntimeException $e) {
+      error_log('Medic: slot not available for entry ' . $entryId . ' - ' . $e->getMessage());
+      return;
+    }
 
     $appointment = $repository->find($postId);
 

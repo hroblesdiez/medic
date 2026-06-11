@@ -2,7 +2,7 @@
 
 @section('content')
 <x-hero
-  :title="get_the_title()" />
+  title="About Us" />
 @include('partials.home.about')
 @include('partials.home.why_choose_us')
 @include('partials.home.cta-banner')

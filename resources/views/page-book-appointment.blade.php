@@ -8,6 +8,7 @@ $doctor = $doctor_id ? get_post($doctor_id) : null;
 @endphp
 
 <section class="booking-section">
+
   <div class="container">
 
     <div class="booking-wrapper" x-data="appointmentForm()">

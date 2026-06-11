@@ -28,7 +28,7 @@ class AvailabilityApi
    */
   private function generateSlotsFromRange(string $range, int $interval = 30): array
   {
-    if (!preg_match('/(\d{1,2}:\d{2})\s*a\s*(\d{1,2}:\d{2})/i', $range, $matches)) {
+    if (!preg_match('/(\d{1,2}:\d{2})\s*(?:a|-)\s*(\d{1,2}:\d{2})/i', $range, $matches)) {
       return [];
     }
 
@@ -129,7 +129,7 @@ class AvailabilityApi
     try {
 
       $doctorId = (int) $request->get_param('doctor');
-      $date = $request->get_param('date'); // 🔥 NUEVO OPCIONAL
+      $date = $request->get_param('date');
 
       if (!$doctorId) {
         return new WP_REST_Response([
@@ -148,11 +148,17 @@ class AvailabilityApi
       /**
        * Carbon Field availability
        */
-      $availability = carbon_get_post_meta($doctorId, 'doctor_availability');
 
-      error_log('🔥 META doctor_availability: ' . print_r($availability, true));
-      error_log('🔥 ALL META: ' . print_r(get_post_meta($doctorId), true));
+      $availability = [];
+      $day   = get_post_meta($doctorId, '_doctor_availability|day|0|0|value', true);
+      $hours = get_post_meta($doctorId, '_doctor_availability|hours|0|0|value', true);
 
+      if ($hours) {
+        $availability[] = [
+          'day'   => $day,
+          'hours' => $hours,
+        ];
+      }
       if (empty($availability)) {
         return new WP_REST_Response([
           'doctor_id' => $doctorId,

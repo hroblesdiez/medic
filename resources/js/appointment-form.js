@@ -4,7 +4,6 @@ export default function appointmentForm() {
     slots: [],
     loadingSlots: false,
 
-    // STATE
     selectedSlot: null,
     email: null,
     date: null,
@@ -17,9 +16,6 @@ export default function appointmentForm() {
       time: '',
     },
 
-    /**
-     * INIT
-     */
     async init() {
       const params = new URLSearchParams(window.location.search);
       this.doctorId = params.get('doctor');
@@ -33,13 +29,15 @@ export default function appointmentForm() {
       if (idField) idField.value = this.doctorId;
 
       this.bindEmailListener();
+
       this.bindDateSelector();
+
       this.bindFormSubmit();
+
       this.bindFlatpickrMinDate();
 
       window.addEventListener('appointment-success', (e) => {
         const response = e.detail;
-
         if (response.appointment_summary) {
           this.submitted = true;
           this.summary = response.appointment_summary;
@@ -52,9 +50,6 @@ export default function appointmentForm() {
       await this.loadAvailability();
     },
 
-    /**
-     * FLATPICKR MIN DATE / TIME
-     */
     bindFlatpickrMinDate() {
       const MAX_ATTEMPTS = 40;
       const INTERVAL_MS = 150;
@@ -62,7 +57,6 @@ export default function appointmentForm() {
 
       const apply = (fp) => {
         const now = new Date();
-
         fp.set('minDate', now);
 
         fp.config.onChange.push((selectedDates) => {
@@ -87,7 +81,7 @@ export default function appointmentForm() {
 
       const poll = setInterval(() => {
         attempts++;
-        const input = document.querySelector('input[name="datetime"]');
+        const input = document.querySelector('input[name="date"]');
 
         if (input && input._flatpickr) {
           clearInterval(poll);
@@ -97,14 +91,11 @@ export default function appointmentForm() {
 
         if (attempts >= MAX_ATTEMPTS) {
           clearInterval(poll);
-          console.warn('Flatpickr instance not found on datetime field.');
+          console.warn('Flatpickr instance not found on date field.');
         }
       }, INTERVAL_MS);
     },
 
-    /**
-     * LOAD SLOTS
-     */
     async loadAvailability() {
       const container = document.querySelector('#slots-container');
 
@@ -116,29 +107,19 @@ export default function appointmentForm() {
         const response = await fetch(
           `/wp-json/medic/v1/availability?doctor=${this.doctorId}`,
         );
-
         const data = await response.json();
         this.slots = data.slots || [];
-
         this.renderSlots();
       } catch (err) {
         console.error(err);
-        const container = document.querySelector('#slots-container');
         if (container) container.innerHTML = `<p>Error loading slots</p>`;
       } finally {
         this.loadingSlots = false;
       }
     },
 
-    /**
-     * RENDER SLOTS
-     *
-     * Filters out past slots when the selected date is today.
-     * Slot format from the API is "HH:MM" (24h).
-     */
     renderSlots() {
       const container = document.querySelector('#slots-container');
-
       if (!container) return;
 
       container.innerHTML = '';
@@ -150,7 +131,6 @@ export default function appointmentForm() {
       const isToday = (() => {
         if (!this.date) return true;
 
-        // this.date comes from FluentForms as "d/m/Y H:i" or "d/m/Y"
         const parts = this.date.split(' ')[0].split('/');
         if (parts.length < 3) return true;
 
@@ -178,7 +158,6 @@ export default function appointmentForm() {
 
       visible.forEach((slot) => {
         const btn = document.createElement('button');
-
         btn.type = 'button';
         btn.innerText = slot;
         btn.className =
@@ -186,11 +165,9 @@ export default function appointmentForm() {
 
         btn.addEventListener('click', () => {
           this.selectedSlot = slot;
-
           document
             .querySelectorAll('#slots-container button')
             .forEach((b) => b.classList.remove('bg-blue-600', 'text-white'));
-
           btn.classList.add('bg-blue-600', 'text-white');
         });
 
@@ -198,58 +175,43 @@ export default function appointmentForm() {
       });
     },
 
-    /**
-     * EMAIL LISTENER
-     */
     bindEmailListener() {
-      document.addEventListener('input', (e) => {
-        if (e.target && e.target.name === 'email') {
-          this.email = e.target.value;
-        }
+      const input = document.querySelector('[name="email"]');
+      if (!input) return;
+
+      input.addEventListener('input', (e) => {
+        this.email = e.target.value;
       });
     },
 
-    /**
-     * DATE LISTENER
-     * Re-renders slots every time the date changes so the filter stays current.
-     */
     bindDateSelector() {
       document.addEventListener('change', (e) => {
-        if (e.target && e.target.name === 'datetime') {
+        if (e.target && e.target.name === 'date') {
           this.date = e.target.value;
           this.renderSlots();
         }
       });
     },
 
-    /**
-     * SYNC ALL FIELDS
-     */
     syncFields() {
       this.email = document.querySelector('[name="email"]')?.value ?? null;
 
       const first =
         document.querySelector('[name="names[first_name]"]')?.value ?? '';
-
       const last =
         document.querySelector('[name="names[last_name]"]')?.value ?? '';
-
       this.name = `${first} ${last}`.trim();
 
-      this.date = document.querySelector('[name="datetime"]')?.value ?? null;
+      this.date = document.querySelector('[name="date"]')?.value ?? null;
 
-      const slotField = document.querySelector('[name="slot_time"]');
+      const slotField = document.querySelector('[name="time"]');
       if (slotField) {
         slotField.value = this.selectedSlot;
       }
     },
 
-    /**
-     * FORM SUBMIT HOOK
-     */
     bindFormSubmit() {
       const form = document.querySelector('.fluentform');
-
       if (!form) return;
 
       form.addEventListener('submit', (e) => {

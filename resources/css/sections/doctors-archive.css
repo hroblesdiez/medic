@@ -101,10 +101,6 @@
   @apply h-full;
 }
 
-.doctor-card {
-  @apply h-[430px];
-}
-
 .doctors-results__loading {
   @apply absolute
          inset-0

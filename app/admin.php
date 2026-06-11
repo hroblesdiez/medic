@@ -17,26 +17,18 @@ add_action('init', function () {
         $role = add_role('client_viewer', 'Medicall Viewer', ['read' => true]);
     }
 
-    // Ensure it has all required caps to SEE menus
-    $caps = [
-        'read',
-        'edit_posts',
-        'edit_pages',
-        'edit_others_posts',
-        'edit_others_pages',
-        'edit_private_posts',
-        'edit_private_pages',
-        'edit_published_posts',
-        'edit_published_pages',
-    ];
-
-    foreach ($caps as $cap) {
-        $role->add_cap($cap);
+    // Ensure it has ONLY read cap
+    $all_caps = $role->capabilities;
+    foreach ($all_caps as $cap => $value) {
+        if ($cap !== 'read') {
+            $role->remove_cap($cap);
+        }
     }
+    $role->add_cap('read');
 
     // Create client user if it doesn't exist
-    if (! username_exists('client')) {
-        $user_id = wp_create_user('client', 'client123', 'client@medicall.com');
+    if (! username_exists('medic_client')) {
+        $user_id = wp_create_user('medic_client', 'client123', 'client@medicall.com');
         $user = new \WP_User($user_id);
         $user->set_role('client_viewer');
     }

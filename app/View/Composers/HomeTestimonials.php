@@ -36,19 +36,20 @@ class HomeTestimonials extends Composer
     public function get_testimonials()
     {
         $args = [
-            'post_type' => 'testimonials',
+            'post_type' => 'testimonial',
             'posts_per_page' => -1,
             'post_status' => 'publish',
         ];
 
         $query = new WP_Query($args);
+
         $testimonials = [];
 
         if ($query->have_posts()) {
             foreach ($query->posts as $post) {
                 $image_id = carbon_get_post_meta($post->ID, 'testimonial_image');
                 $image_url = $image_id ? wp_get_attachment_image_url($image_id, 'large') : get_the_post_thumbnail_url($post->ID, 'large');
-                
+
                 $testimonials[] = (object) [
                     'image' => $image_url,
                     'subtitle' => carbon_get_post_meta($post->ID, 'testimonial_subtitle'),

@@ -14,6 +14,7 @@ $heroTitle = 'Specialities'
       <x-speciality-card
         :id="get_the_ID()"
         :title="get_the_title()"
+        :author-id="get_post_field('post_author', get_the_ID())"
         :icon="carbon_get_post_meta(get_the_ID(), 'speciality_icon')" />
       @endwhile
     </div>

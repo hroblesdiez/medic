@@ -26,7 +26,7 @@ class SpecialityType extends Taxonomy
       'show_ui' => true,
       'show_in_menu' => true,
       'rewrite' => [
-        'slug' => 'speciality',
+        'slug' => 'specialities',
         'with_front' => false,
       ],
     ];

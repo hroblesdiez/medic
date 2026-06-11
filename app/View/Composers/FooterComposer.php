@@ -26,7 +26,7 @@ class FooterComposer extends Composer
       foreach ($items as $item) {
         if ($location === 'footer_specialities') {
           $slug = sanitize_title($item->title);
-          $item->url = home_url("/specialities/{$slug}/");
+          $item->url = home_url("/speciality/{$slug}/");
         } elseif ($item->title === 'Contact') {
           $item->url = home_url('/contact/');
         } else {
