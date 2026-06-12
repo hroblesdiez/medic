@@ -37,7 +37,21 @@ class DoctorApi
                 'posts_per_page' => 12,
                 'paged' => $page,
                 'post_status' => 'publish',
-                'meta_query' => [],
+                'meta_query' => [
+                    'relation' => 'AND',
+                    [
+                        'relation' => 'OR',
+                        [
+                            'key' => '_exclude_from_grid',
+                            'value' => 'yes',
+                            'compare' => '!=',
+                        ],
+                        [
+                            'key' => '_exclude_from_grid',
+                            'compare' => 'NOT EXISTS',
+                        ],
+                    ],
+                ],
                 'tax_query' => [],
             ];
 

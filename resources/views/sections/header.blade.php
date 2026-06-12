@@ -7,14 +7,14 @@
     <div class="main-header__inner">
 
       {{-- Logo --}}
-      <a href="{{ home_url('/') }}" class="relative z-50 shrink-0">
+      <a href="{{ home_url('/') }}" class="relative z-50">
         @if($logo)
         <img
           src="{{ $logo }}"
           alt="{{ $siteName }}"
-          class="h-12 w-auto">
+          class="main-header__logo">
         @else
-        <span class="text-2xl font-bold text-secondary">
+        <span class="text-xl font-bold text-secondary lg:text-2xl">
           {{ $siteName }}
         </span>
         @endif
@@ -26,24 +26,32 @@
       </nav>
 
       {{-- Right Side --}}
-      <div class="flex items-center gap-4">
+      <div class="main-header__actions">
 
-        {{-- CTA --}}
+        {{-- CTA compact: visible below sm, shows only the short label --}}
         <x-button
           href="{{ $cta['url'] }}"
           variant="primary"
           size="md"
-          class="z-50 max-w-none">
-          <span class="md:hidden">{{ $cta['text'][1] }}</span>
-          <span class="hidden md:inline">{{ $cta['text'][0] }}</span>
+          class="main-header__cta main-header__cta--compact z-50">
+          {{ $cta['text'][1] }}
+        </x-button>
+
+        {{-- CTA full: visible from sm upwards --}}
+        <x-button
+          href="{{ $cta['url'] }}"
+          variant="primary"
+          size="md"
+          class="main-header__cta main-header__cta--full z-50">
+          {{ $cta['text'][0] }}
         </x-button>
 
         {{-- Hamburger --}}
         <button
-          @click="toggleMenu"
+          @click="toggleMenu()"
           :aria-expanded="open"
           :class="{ 'is-active': open }"
-          class="hamburger group relative z-50 flex h-10 w-10 items-center justify-center lg:hidden"
+          class="hamburger"
           aria-label="Menu">
 
           <div class="hamburger-icon">
@@ -59,18 +67,11 @@
 
   </div>
 
-  {{-- Mobile Navigation Overlay --}}
+  {{-- Mobile Navigation --}}
   <nav
-    x-show="open"
-    x-cloak
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 translate-y-2"
-    x-transition:enter-end="opacity-100 translate-y-0"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100 translate-y-0"
-    x-transition:leave-end="opacity-0 translate-y-2"
-    class="mobile-menu"
-    :class="{ 'is-open': open }">
+    :class="{ 'is-open': open }"
+    @click="closeMenu()"
+    class="mobile-menu">
 
     {!! $menu !!}
 

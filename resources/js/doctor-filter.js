@@ -61,8 +61,21 @@ export default (config) => ({
 
     try {
       this.loading = true;
-      this.page++;
 
+      if (!this.hasFiltered) {
+        const initialParams = this.buildParams();
+        initialParams.set('page', 1);
+        const initialResponse = await fetch(
+          `${this.apiUrl}?${initialParams.toString()}`,
+        );
+
+        if (initialResponse.ok) {
+          const initialData = await initialResponse.json();
+          this.resultsHtml = initialData.html || '';
+        }
+      }
+
+      this.page++;
       const params = this.buildParams();
       const response = await fetch(`${this.apiUrl}?${params.toString()}`);
 
@@ -75,6 +88,7 @@ export default (config) => ({
       this.resultsHtml += data.html || '';
       this.maxPages = data.max_pages || 1;
       this.foundPosts = data.found_posts || 0;
+      this.hasFiltered = true;
     } catch (error) {
       console.error('Load More Error:', error);
     } finally {

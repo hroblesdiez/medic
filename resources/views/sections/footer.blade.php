@@ -39,16 +39,18 @@
           class="footer-newsletter__form">
 
           <input
+            id="newsletter-email"
             name="email"
             type="email"
             required
+            autocomplete="email"
             placeholder="Enter email address"
             class="footer-newsletter__input" />
 
           <button
             type="submit"
             class="btn btn-primary btn-sm">
-            Send
+            Subscribe
           </button>
 
         </form>

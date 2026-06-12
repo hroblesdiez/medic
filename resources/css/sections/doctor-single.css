@@ -28,7 +28,7 @@
   }
 
   .doctor-meta {
-    @apply flex flex-wrap gap-6 text-gray-600;
+    @apply flex flex-wrap gap-6 text-gray-600 mt-2 lg:mt-4;
   }
 
   .doctor-meta-item {
@@ -60,7 +60,7 @@
   }
 
   .doctor-bio {
-    @apply text-lg text-gray-600 leading-relaxed;
+    @apply text-lg text-gray-600 leading-relaxed mt-2 lg:mt-4;
   }
 
   .doctor-bio p {
@@ -72,7 +72,7 @@
   }
 
   .doctor-speciality-tag {
-    @apply px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-700 font-medium hover:border-blue-500 hover:text-blue-600 transition-colors;
+    @apply px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-700 font-medium hover:border-blue-500 hover:text-blue-600 transition-colors mt-2 lg:mt-4;
   }
 
   .doctor-cta-card {

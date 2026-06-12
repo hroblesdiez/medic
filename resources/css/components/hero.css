@@ -1,9 +1,13 @@
 .hero {
-  @apply relative py-8 lg:py-12 bg-surface-soft overflow-hidden bg-cover bg-center [background-image:var(--hero-default-image)];
+  @apply relative py-8 lg:py-12 bg-surface-soft overflow-hidden;
 }
 
 .hero__decor {
-  @apply absolute pointer-events-none select-none -z-10;
+  @apply absolute pointer-events-none select-none z-0;
+}
+
+.hero__decor img {
+  @apply block max-w-none;
 }
 
 .hero__decor--1 {

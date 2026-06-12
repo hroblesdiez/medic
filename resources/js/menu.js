@@ -5,15 +5,11 @@ export default function menu() {
 
     toggleMenu() {
       this.open = !this.open;
-
-      document.body.classList.toggle('overflow-hidden', this.open);
     },
 
     closeMenu() {
       this.open = false;
       this.activeSubmenu = null;
-
-      document.body.classList.remove('overflow-hidden');
     },
 
     toggleSubmenu(index) {
@@ -33,8 +29,16 @@ export default function menu() {
     },
 
     init() {
+      this.$watch('open', (value) => {
+        document.body.classList.toggle('overflow-hidden', value);
+      });
+
       window.addEventListener('resize', () => {
         this.handleResize();
+      });
+
+      window.addEventListener('beforeunload', () => {
+        document.body.classList.remove('overflow-hidden');
       });
     },
   };

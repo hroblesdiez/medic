@@ -28,6 +28,7 @@ class DoctorsArchive extends Composer
         return [
             'doctors' => $doctors_query->posts,
             'max_pages' => $doctors_query->max_num_pages,
+            'found_posts' => $doctors_query->found_posts,
             'specialities' => $this->getSpecialities(),
             'max_price' => $this->getMaxPrice(),
             'current_speciality' => $this->getCurrentSpeciality(),
@@ -44,6 +45,7 @@ class DoctorsArchive extends Composer
         $args = [
             'post_type' => 'doctors',
             'posts_per_page' => 12,
+            'paged' => 1,
             'post_status' => 'publish',
             'meta_query' => [
                 'relation' => 'OR',
@@ -92,9 +94,23 @@ class DoctorsArchive extends Composer
      */
     public function getMaxPrice()
     {
-        // For a real production app, we would query the DB for the max value.
-        // For now, let's set a reasonable default or query it if possible.
-        return 500;
+        global $wpdb;
+
+        $max_price = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT MAX(CAST(pm.meta_value AS UNSIGNED))
+                FROM {$wpdb->postmeta} pm
+                INNER JOIN {$wpdb->posts} p ON pm.post_id = p.ID
+                WHERE p.post_type = %s
+                AND p.post_status = %s
+                AND pm.meta_key = %s",
+                'doctors',
+                'publish',
+                'doctor_price'
+            )
+        );
+
+        return (int) $max_price ?: 500;
     }
 
     /**

@@ -19,17 +19,20 @@ class DoctorService
         $id = $doctor->ID;
 
         $icon_id = carbon_get_post_meta($id, 'doctor_icon');
-        $image_url = $icon_id
-            ? wp_get_attachment_image_url($icon_id, 'full')
-            : 'https://via.placeholder.com/600x600';
+        $image_url = get_the_post_thumbnail_url($id, 'full')
+            ?: 'https://via.placeholder.com/600x600';
 
         $specialities = get_the_terms($id, 'speciality_type');
         $specialities_list = !is_wp_error($specialities) && !empty($specialities)
             ? array_map(fn($term) => $term->name, $specialities)
             : [];
 
-        $bio = apply_filters('the_content', $doctor->post_content);
-        $short_bio = wp_trim_words(strip_tags($doctor->post_content), 30);
+        $bio = carbon_get_post_meta($id, 'doctor_bio');
+
+        $short_bio = wp_trim_words(
+            wp_strip_all_tags($bio),
+            30
+        );
 
         return [
             'id' => $id,

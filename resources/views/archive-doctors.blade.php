@@ -6,7 +6,7 @@
         initialSpeciality: '{{ $current_speciality ?? '' }}',
         maxPrice: {{ $max_price ?? 500 }},
         initialMaxPages: {{ $max_pages ?? 1 }},
-        initialCount: {{ count($doctors ?? []) }},
+        initialCount: {{ $found_posts ?? count($doctors ?? []) }},
         apiUrl: '{{ esc_url(rest_url('medic/v1/doctors')) }}'
      })"
   x-init="hasFiltered = false">
@@ -94,7 +94,10 @@
           </div>
         </div>
 
-        <div class="doctors-results__grid">
+        <div class="doctors-results__grid"
+          x-transition:enter="transition ease-in duration-2000"
+          x-transition:enter-start="opacity-50"
+          x-transition:enter-end="opacity-100">
           <template x-if="!hasFiltered">
             <div class="contents">
               @foreach($doctors as $doctor)
@@ -117,7 +120,7 @@
           <button
             @click="loadMore()"
             :disabled="loading"
-            class="px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            class="px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer">
             <span x-text="loading ? 'Loading...' : 'See more specialists'"></span>
           </button>
         </div>
