@@ -20,7 +20,6 @@ Alpine.data('menu', menu);
 Alpine.data('doctorFilter', doctorFilter);
 Alpine.data('blogLoadMore', blogLoadMore);
 Alpine.data('appointmentForm', appointmentForm);
-Alpine.data('doctorAppointment', doctorAppointment);
 
 try {
   initializeCookieBanner();

@@ -26,6 +26,7 @@
 @import './sections/appointments.css';
 @import './sections/newsletter.css';
 @import './components/speciality-card.css';
+@import './cookie-banner.css';
 
 [x-cloak] {
   display: none !important;

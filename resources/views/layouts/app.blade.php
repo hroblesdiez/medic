@@ -7,7 +7,7 @@
   @php do_action('get_header'); @endphp
   @php wp_head(); @endphp
 
-  @vite(['resources/css/app.css', 'resources/css/cookie-banner.css', 'resources/js/app.js'])
+  @vite(['resources/css/app.css','resources/js/app.js'])
 
   @if(!empty($defaultHeroImage))
   <style>
