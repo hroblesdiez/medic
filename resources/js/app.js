@@ -8,6 +8,7 @@ import doctorFilter from './doctor-filter';
 import blogLoadMore from './blog-load-more';
 import appointmentForm from './appointment-form';
 import doctorAppointment from './doctor-appointment';
+import initializeCookieBanner from './cookie-banner.js';
 
 window.Alpine = Alpine;
 
@@ -20,6 +21,12 @@ Alpine.data('doctorFilter', doctorFilter);
 Alpine.data('blogLoadMore', blogLoadMore);
 Alpine.data('appointmentForm', appointmentForm);
 Alpine.data('doctorAppointment', doctorAppointment);
+
+try {
+  initializeCookieBanner();
+} catch (error) {
+  console.error('Error initializing Cookie Banner:', error);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.jQuery) {

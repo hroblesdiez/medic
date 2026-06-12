@@ -85,9 +85,8 @@
       <p>Copyright &copy; {{ date('Y') }} All rights reserved</p>
 
       <div class="main-footer__bottom-links">
-        <a href="{{ home_url('/') }}">Legal Notice</a>
-        <a href="{{ home_url('/') }}">Privacy Policy</a>
-        <a href="{{ home_url('/') }}">Refund Policy</a>
+        <a href="{{ home_url('/legal-notice/') }}">Legal Notice</a>
+        <a href="{{ home_url('/privacy-policy/') }}">Privacy Policy</a>
       </div>
 
     </div>
