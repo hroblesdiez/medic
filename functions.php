@@ -50,7 +50,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters', 'admin', 'Fields/OptionsPage', 'Fields/SpecialityFields', 'Fields/DoctorsFields', 'Fields/TestimonialsFields'])
+collect(['setup', 'filters', 'Fields/OptionsPage', 'Fields/SpecialityFields', 'Fields/DoctorsFields', 'Fields/TestimonialsFields'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
@@ -60,20 +60,9 @@ collect(['setup', 'filters', 'admin', 'Fields/OptionsPage', 'Fields/SpecialityFi
         }
     });
 
-// add_action('save_post_doctor', function ($post_id) {
 
-//     $speciality = get_post_meta($post_id, 'speciality', true);
-
-//     if (!$speciality) return;
-
-//     $term = get_term_by('slug', $speciality, 'speciality_type');
-
-//     if (!$term) return;
-
-//     wp_set_object_terms(
-//         $post_id,
-//         [$term->term_id],
-//         'speciality_type',
-//         false
-//     );
-// });
+add_action('init', function () {
+    if (!is_admin()) return;
+    $roles = wp_roles()->roles;
+    error_log('Available roles: ' . implode(', ', array_keys($roles)));
+});

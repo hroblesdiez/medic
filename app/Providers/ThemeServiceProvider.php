@@ -31,6 +31,7 @@ class ThemeServiceProvider extends SageServiceProvider
         (new \App\Services\PostApi())->register();
         (new \App\Services\AvailabilityApi())->register();
         (new \App\Api\AppointmentsApi())->register();
+        (new \App\Admin\ClientDashboard())->register();
         (new \App\Services\Appointments\AppointmentFormListener())->register();
         if ($this->app->runningInConsole()) {
             $this->commands([
