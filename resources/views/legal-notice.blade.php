@@ -10,10 +10,10 @@ Template Name: Legal Notice
     <h1 class="text-4xl font-bold text-secondary mb-2">Legal Notice</h1>
     <p class="text-slate-500 mb-12">Last updated: June 2026</p>
 
-    <div class="prose prose-slate max-w-none space-y-8">
+    <div class="prose prose-slate max-w-none space-y-24">
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Identification</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Identification</h2>
         <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
           <p class="font-semibold mb-2">Operator of this website:</p>
           <p class="mb-1">Humberto Robles Diez</p>
@@ -23,7 +23,7 @@ Template Name: Legal Notice
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Portfolio Project Disclaimer</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Portfolio Project Disclaimer</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           This website is a portfolio project created to demonstrate web development capabilities, including responsive design, modern web technologies, and best practices in user experience and accessibility. This is not a commercial medical practice or healthcare provider.
         </p>
@@ -33,7 +33,7 @@ Template Name: Legal Notice
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Intellectual Property</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Intellectual Property</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           All content on this website, including text, graphics, logos, images, and software, is the property of Humberto Robles Diez or is used with permission. You may not reproduce, distribute, or transmit any content without prior written consent, except for personal, non-commercial use.
         </p>
@@ -43,35 +43,35 @@ Template Name: Legal Notice
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Disclaimer of Warranties</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Disclaimer of Warranties</h2>
         <p class="text-slate-700 leading-relaxed">
           This website is provided on an "as is" basis. Humberto Robles Diez makes no representations or warranties, express or implied, regarding the website or its content. The website is provided without warranty of any kind, including fitness for a particular purpose, merchantability, or non-infringement. The entire risk as to the quality and performance of the website is with you.
         </p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Limitation of Liability</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Limitation of Liability</h2>
         <p class="text-slate-700 leading-relaxed">
           To the fullest extent permitted by law, Humberto Robles Diez shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from your use of or inability to use the website or its content.
         </p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Website Availability</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Website Availability</h2>
         <p class="text-slate-700 leading-relaxed">
           Humberto Robles Diez does not guarantee that the website will be available at all times or free from interruption. We reserve the right to modify, suspend, or discontinue the website or any part thereof at any time without notice.
         </p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Third-Party Links</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Third-Party Links</h2>
         <p class="text-slate-700 leading-relaxed">
           This website may contain links to third-party websites. Humberto Robles Diez is not responsible for the content, accuracy, or practices of external websites. Your use of third-party websites is at your own risk and subject to their terms of service and privacy policies.
         </p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Contact Information</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Contact Information</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           For questions regarding this legal notice, privacy practices, or any concerns about this website, please contact:
         </p>

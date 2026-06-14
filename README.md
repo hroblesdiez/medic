@@ -1,42 +1,90 @@
-<p align="center">
-  <a href="https://roots.io/sage/"><img alt="Sage" src="https://cdn.roots.io/app/uploads/logo-sage.svg" height="100"></a>
-</p>
+# Medic WordPress Theme
 
-<p align="center">
-  <a href="https://packagist.org/packages/roots/sage"><img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/sage?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square"></a>
-  <a href="https://github.com/roots/sage/actions/workflows/main.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/sage/main.yml?branch=main&logo=github&label=CI&style=flat-square"></a>
-  <a href="https://twitter.com/rootswp"><img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square"></a>
-  <a href="https://github.com/sponsors/roots"><img src="https://img.shields.io/badge/sponsor%20roots-525ddc?logo=github&style=flat-square&logoColor=ffffff&message=" alt="Sponsor Roots"></a>
-</p>
+Professional WordPress theme for medical clinics, built with Sage 11 and a component-first architecture.
 
-# Sage
+# Tech Stack
 
-**Advanced hybrid WordPress starter theme with Laravel Blade and Tailwind CSS**
+- WordPress
+- Sage 11 (Roots ecosystem)
+- Acorn (Laravel components for WordPress)
+- Blade (Templating engine)
+- Tailwind CSS v4 (Styling framework)
+- Alpine.js (Lightweight JavaScript)
+- Vite (Build tool and development server)
+- Carbon Fields (Custom fields and options)
+- Fluent Forms (Form management)
+- Google Analytics (Performance tracking)
+- GDPR Consent Management (Custom implementation)
 
-- 🔧 Clean, efficient theme templating with Laravel Blade
-- ⚡️ Modern front-end development workflow powered by Vite
-- 🎨 Out of the box support for Tailwind CSS
-- 🚀 Harness the power of Laravel with [Acorn integration](https://github.com/roots/acorn)
-- 📦 Block editor support built-in
+# Architecture
 
-Sage brings proper PHP templating and modern JavaScript tooling to WordPress themes. Write organized, component-based code using Laravel Blade, enjoy instant builds and CSS hot-reloading with Vite, and leverage Laravel's robust feature set through Acorn.
+The project follows a modern, service-oriented architecture within the Sage 11 ecosystem:
 
-[Read the docs to get started](https://roots.io/sage/docs/installation/)
+- **App Layer**: Business logic is centralized in `app/Services` and `app/Api`.
+- **View Layer**: Blade templates in `resources/views` are presentation-only, receiving prepared data from **View Composers** located in `app/View/Composers`.
+- **Styles**: Organized as semantic components in `resources/css`, leveraging Tailwind v4 utilities and CSS variables for a robust design system.
+- **Interactivity**: Powered by modular Alpine.js components in `resources/js`, providing high performance without the overhead of larger frameworks.
 
-## Support us
+# Features
 
-Roots is an independent open source org, supported only by developers like you. Your sponsorship funds [WP Packages](https://wp-packages.org/) and the entire Roots ecosystem, and keeps them independent. Support us by purchasing [Radicle](https://roots.io/radicle/) or [sponsoring us on GitHub](https://github.com/sponsors/roots) — sponsors get access to our private Discord.
+- **Doctor Directory**: Advanced filtering and search functionality using a custom REST API and progressive enhancement with Alpine.js.
+- **Appointment Booking**: Integrated booking flow with real-time feedback and data validation.
+- **Dynamic Content**: Managed via Carbon Fields for Doctors, Specialities, Testimonials, and FAQs.
+- **Responsive Layout**: Fully optimized for all screen sizes, starting from 320px up to ultra-wide displays.
+- **Privacy First**: Built-in GDPR-compliant cookie consent manager with granular category controls.
 
-### Sponsors
+# Performance Considerations
 
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" height="90"></a> <a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" height="90"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" height="90"></a>
+- **Vite Integration**: Provides lightning-fast HMR and optimized production bundles.
+- **Tailwind v4 JIT**: Ensures only required CSS is delivered to the client, minimizing the critical CSS footprint.
+- **Optimized Assets**: Modular JavaScript and minimal dependencies ensure fast initial page loads and high Lighthouse scores.
+- **Lazy Loading**: Progressive loading of assets and images to optimize Core Web Vitals (LCP, CLS).
 
-## Community
+# Accessibility
 
-Keep track of development and community news.
+The theme targets WCAG 2.2 AA compliance:
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Join us on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Follow the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+- Semantic HTML structure.
+- Visible focus states for all interactive elements.
+- ARIA labels and roles for dynamic components.
+- Logical heading hierarchy throughout all templates.
+- Keyboard-accessible navigation and forms.
+
+# Security
+
+- **Output Escaping**: All dynamic data is strictly escaped using WordPress security functions (`esc_html`, `esc_url`, `esc_attr`).
+- **Data Sanitization**: Input data is sanitized and validated at the service layer.
+- **REST Protection**: Custom API endpoints implement proper permission callbacks and nonce verification where applicable.
+
+# Development
+
+### Requirements
+
+- PHP 8.1+
+- Node.js 18+
+- Composer
+- WP-CLI
+
+### Installation
+
+1. Clone the repository into your WordPress themes directory.
+2. Run `composer install` to install PHP dependencies.
+3. Run `npm install` to install JavaScript dependencies.
+
+# Build Commands
+
+- `npm run dev`: Start the Vite development server with HMR.
+- `npm run build`: Generate production-ready assets.
+- `composer test`: Run PHPUnit tests (if applicable).
+
+# Deployment Notes
+
+- Ensure the `public/` directory is writable by the web server for asset generation.
+- The theme expects Acorn to be installed and active (either as a plugin or via composer).
+- Production assets must be generated via `npm run build` before deployment.
+
+# Future Improvements
+
+- Implementation of server-side caching for complex API queries.
+- Expanded automated testing coverage for Alpine.js components.
+- Further optimization of high-resolution image assets.

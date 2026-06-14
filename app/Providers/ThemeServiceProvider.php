@@ -27,9 +27,9 @@ class ThemeServiceProvider extends SageServiceProvider
         parent::boot();
         (new \App\Taxonomies\SpecialityType())->register();
         (new \App\Services\DoctorSpecialitySync())->register();
-        (new \App\Services\DoctorApi())->register();
-        (new \App\Services\PostApi())->register();
-        (new \App\Services\AvailabilityApi())->register();
+        (new \App\Api\DoctorApi())->register();
+        (new \App\Api\PostApi())->register();
+        (new \App\Api\AvailabilityApi())->register();
         (new \App\Api\AppointmentsApi())->register();
         (new \App\Admin\ClientDashboard())->register();
         (new \App\Services\Appointments\AppointmentFormListener())->register();

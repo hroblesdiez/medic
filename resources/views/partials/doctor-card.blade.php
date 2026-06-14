@@ -1,31 +1,15 @@
 @php
 /**
-* @var WP_Post $doctor
+* @var array $doctor
 */
-
-$location = carbon_get_post_meta($doctor->ID, 'doctor_location');
-$price = carbon_get_post_meta($doctor->ID, 'doctor_price');
-$experience = carbon_get_post_meta($doctor->ID, 'doctor_years_experience');
-$slots = carbon_get_post_meta($doctor->ID, 'doctor_available_slots');
-
-$custom_image_id = carbon_get_post_meta($doctor->ID, 'doctor_icon');
-$thumbnail = $custom_image_id
-? wp_get_attachment_image_url($custom_image_id, 'large')
-: get_the_post_thumbnail_url($doctor->ID, 'large');
-
-$specialities = get_the_terms($doctor->ID, 'speciality_type');
-
-// SAFE URL PARAMS
-$doctor_name = rawurlencode($doctor->post_title);
-$booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
 @endphp
 
 <article class="doctor-card group">
 
   {{-- Image --}}
   <div class="doctor-card__image-container">
-    @if($thumbnail)
-    <img src="{{ $thumbnail }}" alt="{{ esc_attr($doctor->post_title) }}" class="doctor-card__image">
+    @if(!empty($doctor['image']))
+    <img src="{{ esc_url($doctor['image']) }}" alt="{{ esc_attr($doctor['name']) }}" class="doctor-card__image">
     @else
     <div class="w-full h-full flex items-center justify-center bg-primary-soft">
       <svg class="w-16 h-16 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -34,9 +18,9 @@ $booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
     </div>
     @endif
 
-    @if($price)
+    @if(!empty($doctor['price']))
     <div class="doctor-card__price">
-      {{ $price }} PLN<span class="text-white/60 font-medium ml-1">/visit</span>
+      {{ esc_html($doctor['price']) }} PLN<span class="text-white/60 font-medium ml-1">/visit</span>
     </div>
     @endif
   </div>
@@ -46,12 +30,10 @@ $booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
 
     <div class="flex items-center justify-between gap-4">
       <div class="flex flex-wrap gap-2">
-        @if($specialities && !is_wp_error($specialities))
-        @foreach(array_slice($specialities, 0, 1) as $speciality)
+        @if(!empty($doctor['speciality']))
         <span class="doctor-card__badge">
-          {{ $speciality->name }}
+          {{ esc_html($doctor['speciality']) }}
         </span>
-        @endforeach
         @endif
       </div>
     </div>
@@ -60,40 +42,40 @@ $booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
 
       {{-- TITLE (ONLY detail navigation) --}}
       <h3 class="doctor-card__title">
-        <a href="{{ get_permalink($doctor->ID) }}" class="hover:underline">
-          {{ $doctor->post_title }}
+        <a href="{{ esc_url($doctor['url']) }}" class="hover:underline">
+          {{ esc_html($doctor['name']) }}
         </a>
       </h3>
 
       <div class="flex flex-col gap-2 mt-3 mb-4">
 
-        @if($location)
+        @if(!empty($doctor['location']))
         <div class="doctor-card__info">
-          <svg class="doctor-card__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="doctor-card__icon" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           </svg>
-          {{ $location }}
+          {{ esc_html($doctor['location']) }}
         </div>
         @endif
 
-        @if($experience)
+        @if(!empty($doctor['experience']))
         <div class="doctor-card__info">
-          <svg class="doctor-card__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="doctor-card__icon" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>{{ $experience }} {{ $experience == 1 ? 'year' : 'years' }} exp.</span>
+          <span>{{ esc_html($doctor['experience']) }} {{ $doctor['experience'] == 1 ? 'year' : 'years' }} exp.</span>
         </div>
         @endif
 
-        @if($slots)
+        @if(!empty($doctor['available_slots']))
         <div class="doctor-card__info">
-          <svg class="doctor-card__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="doctor-card__icon" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>{{ $slots }}</span>
+          <span>{{ esc_html($doctor['available_slots']) }}</span>
         </div>
         @endif
 
@@ -104,12 +86,12 @@ $booking_url = home_url("/book-appointment?doctor={$doctor->ID}");
     <div class="mt-auto text-center">
 
       <a
-        href="{{ $booking_url }}"
+        href="{{ esc_url($doctor['booking_url']) }}"
         class="doctor-card__button"
         @click.stop
         rel="noopener noreferrer">
         Book Appointment
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-4 h-4" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
             d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>

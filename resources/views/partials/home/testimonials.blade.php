@@ -18,19 +18,19 @@
               {{-- LEFT: IMAGE --}}
               <div class="testimonial-image-container">
                 @if($testimonial->image)
-                <img src="{{ $testimonial->image }}" alt="{{ $testimonial->name }}">
+                <img src="{{ esc_url($testimonial->image) }}" alt="{{ esc_attr($testimonial->name) }}">
                 @else
                 <div class="testimonial-image-placeholder"></div>
                 @endif
               </div>
               {{-- RIGHT: CONTENT --}}
               <div class="testimonial-content">
-                <span class="testimonial-subtitle">{{ $testimonial->subtitle ?: 'Testimonials' }}</span>
-                <h2 class="testimonial-title">{{ $testimonial->title ?: 'What Our Clients Say' }}</h2>
-                <div class="testimonial-text">"{{ $testimonial->text }}"</div>
+                <span class="testimonial-subtitle">{{ esc_html($testimonial->subtitle ?: 'Testimonials') }}</span>
+                <h2 class="testimonial-title">{{ esc_html($testimonial->title ?: 'What Our Clients Say') }}</h2>
+                <div class="testimonial-text">"{{ esc_html($testimonial->text) }}"</div>
                 <div class="mt-2 md:mt-4">
-                  <p class="testimonial-author">{{ $testimonial->name }}</p>
-                  <p class="testimonial-city">{{ $testimonial->city }}</p>
+                  <p class="testimonial-author">{{ esc_html($testimonial->name) }}</p>
+                  <p class="testimonial-city">{{ esc_html($testimonial->city) }}</p>
                 </div>
               </div>
             </div>

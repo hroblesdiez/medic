@@ -23,8 +23,11 @@ class SpecialitySingle extends Composer
      */
     public function with()
     {
+        $service = new \App\Services\Doctors\DoctorService();
+        $top_doctors = $this->getTopDoctors();
+
         return [
-            'top_doctors' => $this->getTopDoctors(),
+            'top_doctors' => array_map(fn($doctor) => $service->getDoctorData($doctor), $top_doctors),
         ];
     }
 

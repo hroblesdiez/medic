@@ -1,3 +1,27 @@
+@utility filter-input {
+  @apply block w-full pl-11 pr-4 py-3.5 border border-slate-200 rounded-xl bg-slate-50 text-sm font-medium transition-all;
+
+  &:focus {
+    @apply outline-none bg-white ring-2 ring-primary-soft;
+  }
+}
+
+@utility filter-range {
+  @apply w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary;
+}
+
+@utility filter-option {
+  @apply flex items-center gap-3 cursor-pointer py-2;
+}
+
+@utility filter-option__input {
+  @apply w-5 h-5 border-2 border-slate-200 rounded-md checked:bg-primary checked:border-primary transition-all appearance-none cursor-pointer;
+}
+
+@utility filter-option__label {
+  @apply text-sm font-medium text-slate-600 group-hover:text-secondary transition-colors;
+}
+
 #slots-container {
   @apply flex flex-row flex-wrap gap-4 mt-3;
 }

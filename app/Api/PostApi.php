@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Api;
 
 use WP_Query;
 use function Roots\view;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Api;
 
 use WP_Query;
 use function Roots\view;
@@ -82,11 +82,13 @@ class DoctorApi
 
             $query = new WP_Query($args);
             $html = '';
+            $service = new \App\Services\Doctors\DoctorService();
 
             if ($query->have_posts()) {
                 foreach ($query->posts as $doctor) {
+                    $preparedDoctor = $service->getDoctorData($doctor);
                     // Renderizamos cada tarjeta usando el componente centralizado
-                    $html .= view('partials.doctor-card', ['doctor' => $doctor])->render();
+                    $html .= view('partials.doctor-card', ['doctor' => $preparedDoctor])->render();
                 }
             }
 

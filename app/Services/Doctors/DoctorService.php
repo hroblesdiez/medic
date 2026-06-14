@@ -47,6 +47,8 @@ class DoctorService
             'specialities' => $specialities_list,
             'qualifications' => carbon_get_post_meta($id, 'doctor_qualifications') ?: '',
             'available_slots' => carbon_get_post_meta($id, 'doctor_available_slots') ?: '',
+            'url' => get_permalink($id),
+            'booking_url' => home_url("/book-appointment?doctor={$id}"),
             'seo' => [
                 'title' => get_the_title($id) . ' | Medical Clinic',
                 'description' => $short_bio,

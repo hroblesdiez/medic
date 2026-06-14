@@ -23,8 +23,11 @@ class HomeDoctors extends Composer
      */
     public function with()
     {
+        $service = new \App\Services\Doctors\DoctorService();
+        $doctors = $this->get_best_doctors();
+
         return [
-            'doctors' => $this->get_best_doctors(),
+            'doctors' => array_map(fn($doctor) => $service->getDoctorData($doctor), $doctors),
         ];
     }
 

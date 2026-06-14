@@ -103,8 +103,8 @@
     @apply w-full rounded-xl border border-gray-200 px-4 py-3 text-base transition-all duration-200;
   }
 
-  .ff-el-form-control:focus {
-    @apply border-primary ring-0 outline-none;
+  .ff-el-form-control:focus-visible {
+    @apply border-primary ring-2 ring-primary-soft outline-none;
   }
 
   textarea.ff-el-form-control {
@@ -120,8 +120,8 @@
       @apply bg-primary-dark;
     }
 
-    &:focus {
-      @apply outline-none;
+    &:focus-visible {
+      @apply outline-none ring-2 ring-primary ring-offset-2;
     }
   }
 
@@ -157,7 +157,11 @@
          font-semibold text-white!
          bg-primary shadow-button
          transition duration-300 cursor-pointer
-         border-none outline-none;
+         border-none;
+
+  &:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+  }
 }
 
 .contact-form-grid .btn-primary:hover,

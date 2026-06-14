@@ -1,8 +1,8 @@
 .btn {
   @apply inline-flex items-center justify-center gap-3 rounded-full font-semibold transition duration-300;
 
-  &:focus {
-    @apply outline-none;
+  &:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
   }
 }
 

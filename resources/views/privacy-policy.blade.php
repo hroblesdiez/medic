@@ -10,17 +10,17 @@ Template Name: Privacy Policy
     <h1 class="text-4xl font-bold text-secondary mb-2">Privacy Policy</h1>
     <p class="text-slate-500 mb-12">Last updated: June 2026</p>
 
-    <div class="prose prose-slate max-w-none space-y-8">
+    <div class="prose prose-slate max-w-none space-y-24">
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">Introduction</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">Introduction</h2>
         <p class="text-slate-700 leading-relaxed">
           This Privacy Policy explains how Humberto Robles Diez ("we," "us," "our," or "the Site") collects, uses, and protects your personal information when you visit this website (the "Site"). We are committed to protecting your privacy and complying with the General Data Protection Regulation (GDPR) and applicable data protection laws.
         </p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">1. Data Controller</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">1. Data Controller</h2>
         <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 mb-4">
           <p class="font-semibold mb-2">Data Controller:</p>
           <p class="mb-1">Humberto Robles Diez</p>
@@ -33,7 +33,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">2. Information We Collect</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">2. Information We Collect</h2>
 
         <h3 class="text-xl font-semibold text-slate-900 mb-3">2.1 Information You Provide</h3>
         <p class="text-slate-700 leading-relaxed mb-4">
@@ -58,7 +58,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">3. How We Use Your Information</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">3. How We Use Your Information</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           We use the information we collect for the following purposes:
         </p>
@@ -72,7 +72,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">4. Google Analytics</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">4. Google Analytics</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           This website uses Google Analytics, a web analytics service provided by Google Ireland Limited ("Google"). Google Analytics helps us understand how you use the Site.
         </p>
@@ -90,7 +90,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">5. Cookies</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">5. Cookies</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           Our website uses cookies to enhance your experience. You can manage your cookie preferences using the cookie banner at the bottom of the page.
         </p>
@@ -115,7 +115,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">6. Data Storage and Security</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">6. Data Storage and Security</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           We implement appropriate technical and organizational measures to protect your personal information:
         </p>
@@ -130,7 +130,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">7. Data Retention</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">7. Data Retention</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           <strong>Contact Form Submissions:</strong> Retained in our database for as long as necessary to respond to your inquiry, typically 30 days unless further communication is needed.
         </p>
@@ -143,7 +143,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">8. Your Rights (GDPR/RGPD)</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">8. Your Rights (GDPR/RGPD)</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           Under GDPR and applicable data protection laws, you have the following rights:
         </p>
@@ -180,7 +180,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">9. How to Exercise Your Rights</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">9. How to Exercise Your Rights</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           To exercise any of your rights, please contact us with a clear description of your request:
         </p>
@@ -192,7 +192,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">10. Third-Party Sharing</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">10. Third-Party Sharing</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           We do not sell, trade, or rent your personal information to third parties. Your data is only shared with:
         </p>
@@ -204,7 +204,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">11. Cookies and Tracking Opt-Out</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">11. Cookies and Tracking Opt-Out</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           You can control your cookie preferences at any time:
         </p>
@@ -219,7 +219,7 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">12. Portfolio Project Notice</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">12. Portfolio Project Notice</h2>
         <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
           <p class="font-semibold text-amber-900 mb-2">Important:</p>
           <p class="text-amber-800 text-sm mb-2">
@@ -232,14 +232,14 @@ Template Name: Privacy Policy
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">13. Changes to This Privacy Policy</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">13. Changes to This Privacy Policy</h2>
         <p class="text-slate-700 leading-relaxed">
           We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by updating the "Last updated" date at the top of this page. Your continued use of the Site constitutes your acceptance of the updated Privacy Policy.
         </p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-secondary mb-4">14. Contact Us</h2>
+        <h2 class="text-2xl! font-bold! text-secondary! mb-10!">14. Contact Us</h2>
         <p class="text-slate-700 leading-relaxed mb-4">
           If you have questions about this Privacy Policy or our data practices, please contact us:
         </p>

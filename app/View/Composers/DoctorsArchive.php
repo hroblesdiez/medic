@@ -24,9 +24,10 @@ class DoctorsArchive extends Composer
      */
     public function with()
     {
+        $service = new \App\Services\Doctors\DoctorService();
         $doctors_query = $this->getDoctorsQuery();
         return [
-            'doctors' => $doctors_query->posts,
+            'doctors' => array_map(fn($doctor) => $service->getDoctorData($doctor), $doctors_query->posts),
             'max_pages' => $doctors_query->max_num_pages,
             'found_posts' => $doctors_query->found_posts,
             'specialities' => $this->getSpecialities(),
