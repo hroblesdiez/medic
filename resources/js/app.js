@@ -21,11 +21,13 @@ Alpine.data('doctorFilter', doctorFilter);
 Alpine.data('blogLoadMore', blogLoadMore);
 Alpine.data('appointmentForm', appointmentForm);
 
-try {
-  initializeCookieBanner();
-} catch (error) {
-  console.error('Error initializing Cookie Banner:', error);
-}
+document.addEventListener('alpine:initialized', () => {
+  try {
+    initializeCookieBanner();
+  } catch (error) {
+    console.error('Error initializing Cookie Banner:', error);
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.jQuery) {
