@@ -80,7 +80,7 @@
           <img
             class="w-full h-full"
             src="{{ Vite::asset('resources/images/phone.svg') }}"
-            alt="Call us for emergency medical assistance" aria-hidden="true">
+            alt="Phone icon for emergency contact"
 
           </div>
 

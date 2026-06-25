@@ -30,7 +30,7 @@ $classes = 'btn ' . ($variantClasses[$variant] ?? 'btn-primary') . ' ' . ($sizeC
   <img
     class="h-5 w-5 shrink-0"
     src="{{ Vite::asset('resources/images/user-tick.svg') }}"
-    alt="Icon">
+    alt="" aria-hidden="true">
   @endif
 
   <span>

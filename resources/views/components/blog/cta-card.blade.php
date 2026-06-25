@@ -8,7 +8,7 @@
 
     <a href="/appointments" class="inline-flex items-center px-8 py-4 bg-[var(--color-primary)] rounded-[var(--radius-pill)] text-sm font-bold text-white! shadow-[var(--shadow-button)] hover:bg-[var(--color-primary-dark)] transition-all gap-3 hover:-translate-y-1 mt-2 lg:mt-4">
       Connect with a Specialist
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
       </svg>
     </a>

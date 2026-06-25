@@ -17,7 +17,10 @@ class OptionsPage
             ])
             ->add_tab('Hero', [
                 Field::make('image', 'medic_default_hero_image', 'Default Hero Image'),
-
+            ])
+            ->add_tab('SEO', [
+                Field::make('textarea', 'medic_seo_description', 'Homepage Meta Description')
+                    ->set_help_text('Used as fallback meta description for the front page.'),
             ]);
     }
 }

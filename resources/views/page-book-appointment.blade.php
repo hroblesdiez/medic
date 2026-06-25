@@ -54,7 +54,7 @@ $doctor = $doctor_id ? get_post($doctor_id) : null;
             x-transition:enter-end="opacity-100 translate-y-0"
             class="success-container">
             <div class="success-icon-wrapper">
-              <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>

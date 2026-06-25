@@ -31,9 +31,9 @@
       <aside class="doctors-filter">
         <div class="doctors-filter__card">
           <div class="doctors-filter__header">
-            <h3 class="text-lg font-bold text-secondary flex items-center gap-2">
+            <h2 class="text-lg font-bold text-secondary flex items-center gap-2">
               Filter Options
-            </h3>
+            </h2>
             <button @click="resetFilters()" class="text-xs font-bold text-primary hover:text-primary-dark transition-colors tracking-wider">Reset All</button>
           </div>
 

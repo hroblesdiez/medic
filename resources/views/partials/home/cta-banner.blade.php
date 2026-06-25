@@ -36,7 +36,8 @@
           <img
             class="cta-banner__image"
             src="{{ Vite::asset('resources/images/banner-doctor.png') }}"
-            alt="Experienced doctor ready to help you feel better with personalized care">
+            alt="Experienced doctor ready to help you feel better with personalized care"
+            width="400" height="533">
 
         </div>
 

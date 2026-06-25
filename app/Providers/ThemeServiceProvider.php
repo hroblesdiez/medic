@@ -44,6 +44,37 @@ class ThemeServiceProvider extends SageServiceProvider
         (new ClientDashboard)->register();
         (new AppointmentFormListener)->register();
         (new SchemaService)->register();
+
+        add_action('wp_head', function () {
+            if (is_admin()) {
+                return;
+            }
+
+            $description = '';
+
+            if (is_front_page()) {
+                $description = carbon_get_theme_option('medic_seo_description')
+                    ?: 'Medicall — Professional medical clinic in Warsaw. Book appointments with trusted specialists for personalized healthcare.';
+            } elseif (is_singular('doctors')) {
+                $doctorId = get_the_ID();
+                $customDesc = carbon_get_post_meta($doctorId, 'doctor_seo_description');
+                $description = ! empty($customDesc)
+                    ? $customDesc
+                    : wp_trim_words(wp_strip_all_tags(carbon_get_post_meta($doctorId, 'doctor_bio') ?: ''), 30);
+            } elseif (is_singular() && ! class_exists('RankMath\\Post')) {
+                $post = get_post();
+                if ($post) {
+                    $description = ! empty($post->post_excerpt)
+                        ? $post->post_excerpt
+                        : wp_trim_words(wp_strip_all_tags($post->post_content), 30);
+                }
+            }
+
+            if (! empty($description)) {
+                echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
+            }
+        }, 20);
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 PopulateTestimonials::class,

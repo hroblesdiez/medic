@@ -37,6 +37,11 @@ class SchemaService
                 if ($faqSchema) {
                     $schemas[] = $faqSchema;
                 }
+
+                $reviewSchema = $this->reviewSchema();
+                if ($reviewSchema) {
+                    $schemas[] = $reviewSchema;
+                }
             }
 
             $schemas = array_values(array_filter($schemas));
@@ -291,6 +296,57 @@ class SchemaService
         }
 
         return $schema;
+    }
+
+    private function reviewSchema(): ?array
+    {
+        $testimonials = get_posts([
+            'post_type' => 'testimonial',
+            'posts_per_page' => 5,
+            'post_status' => 'publish',
+        ]);
+
+        if (empty($testimonials)) {
+            return null;
+        }
+
+        $reviews = [];
+
+        foreach ($testimonials as $testimonial) {
+            $name = carbon_get_post_meta($testimonial->ID, 'testimonial_name') ?: 'Patient';
+            $content = carbon_get_post_meta($testimonial->ID, 'testimonial_text');
+
+            if (empty($content)) {
+                continue;
+            }
+
+            $reviews[] = [
+                '@type' => 'Review',
+                'author' => [
+                    '@type' => 'Person',
+                    'name' => $name,
+                ],
+                'reviewBody' => wp_strip_all_tags($content),
+                'itemReviewed' => [
+                    '@type' => 'MedicalBusiness',
+                    '@id' => home_url('/').'#organization',
+                ],
+            ];
+        }
+
+        if (empty($reviews)) {
+            return null;
+        }
+
+        return [
+            '@context' => 'https://schema.org',
+            '@type' => 'AggregateRating',
+            '@id' => home_url('/').'#rating',
+            'itemReviewed' => [
+                '@id' => home_url('/').'#organization',
+            ],
+            'review' => $reviews,
+        ];
     }
 
     private function faqPageSchema(): ?array

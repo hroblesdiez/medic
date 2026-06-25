@@ -15,7 +15,7 @@
   x-transition:enter-end="opacity-100 scale-100"
   class="max-w-md mx-auto mt-8 p-6 bg-white border border-gray-200 rounded-2xl shadow-xl">
   <div class="flex items-center justify-center w-12 h-12 mx-auto bg-green-100 rounded-full">
-    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
     </svg>
   </div>
