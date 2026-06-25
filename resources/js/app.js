@@ -8,7 +8,7 @@ import doctorFilter from './doctor-filter';
 import blogLoadMore from './blog-load-more';
 import appointmentForm from './appointment-form';
 import doctorAppointment from './doctor-appointment';
-import initializeCookieBanner from './cookie-banner.js';
+import initializeConsentBanner from './consent-banner.js';
 
 window.Alpine = Alpine;
 
@@ -23,9 +23,9 @@ Alpine.data('appointmentForm', appointmentForm);
 
 document.addEventListener('alpine:initialized', () => {
   try {
-    initializeCookieBanner();
+    initializeConsentBanner();
   } catch (error) {
-    console.error('Error initializing Cookie Banner:', error);
+    console.error('Error initializing Consent Banner:', error);
   }
 });
 

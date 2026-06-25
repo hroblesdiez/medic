@@ -6,7 +6,7 @@
 
       <!-- IMAGE -->
       <div class="order-2 lg:order-1 lg:sticky lg:top-24">
-        <img src="{{  Vite::asset('resources/images/faq.png') }}" alt="FAQ" class="faq-image">
+        <img src="{{  Vite::asset('resources/images/faq.png') }}" alt="Frequently asked questions about our medical clinic services" class="faq-image">
       </div>
 
       <!-- FAQ LIST -->

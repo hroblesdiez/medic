@@ -52,23 +52,23 @@ function loadGoogleAnalytics() {
 
 function createBanner() {
   const banner = document.createElement('div');
-  banner.className = 'cookie-banner';
-  banner.id = 'cookie-banner';
+  banner.className = 'consent-banner';
+  banner.id = 'consent-banner';
 
   banner.innerHTML = `
-    <div class="cookie-banner__container">
-      <div class="cookie-banner__content">
-        <div class="cookie-banner__text">
-          <p class="cookie-banner__title">Cookie Settings</p>
-          <p class="cookie-banner__description">
+    <div class="consent-banner__container">
+      <div class="consent-banner__content">
+        <div class="consent-banner__text">
+          <p class="consent-banner__title">Cookie Settings</p>
+          <p class="consent-banner__description">
             We use cookies to enhance your experience and analyze site usage.
-            <a href="/privacy-policy/" class="cookie-banner__link">Learn more</a>
+            <a href="/privacy-policy/" class="consent-banner__link">Learn more</a>
           </p>
         </div>
-        <div class="cookie-banner__actions">
-          <button class="cookie-banner__btn cookie-banner__btn--reject" id="cookie-reject">Reject All</button>
-          <button class="cookie-banner__btn cookie-banner__btn--settings" id="cookie-settings">Settings</button>
-          <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookie-accept">Accept All</button>
+        <div class="consent-banner__actions">
+          <button class="consent-banner__btn consent-banner__btn--reject" id="consent-reject">Reject All</button>
+          <button class="consent-banner__btn consent-banner__btn--settings" id="consent-settings">Settings</button>
+          <button class="consent-banner__btn consent-banner__btn--accept" id="consent-accept">Accept All</button>
         </div>
       </div>
     </div>
@@ -76,20 +76,20 @@ function createBanner() {
 
   document.body.appendChild(banner);
 
-  banner.querySelector('#cookie-accept').addEventListener('click', () => {
+  banner.querySelector('#consent-accept').addEventListener('click', () => {
     setConsent({ analytics: true });
     saveCookie('medic_analytics_consent', 'true');
     banner.remove();
     loadGoogleAnalytics();
   });
 
-  banner.querySelector('#cookie-reject').addEventListener('click', () => {
+  banner.querySelector('#consent-reject').addEventListener('click', () => {
     setConsent({ analytics: false });
     saveCookie('medic_analytics_consent', 'false');
     banner.remove();
   });
 
-  banner.querySelector('#cookie-settings').addEventListener('click', () => {
+  banner.querySelector('#consent-settings').addEventListener('click', () => {
     showSettingsModal();
   });
 }
@@ -97,42 +97,42 @@ function createBanner() {
 function showSettingsModal() {
   const consent = getConsent() || defaultConsent;
   const overlay = document.createElement('div');
-  overlay.className = 'cookie-banner__modal';
-  overlay.id = 'cookie-modal';
+  overlay.className = 'consent-banner__modal';
+  overlay.id = 'consent-modal';
 
   overlay.innerHTML = `
-    <div class="cookie-banner__modal-content">
-      <div class="cookie-banner__modal-header">
-        <h2 class="cookie-banner__modal-title">Cookie Preferences</h2>
-        <button class="cookie-banner__modal-close" id="modal-close">
+    <div class="consent-banner__modal-content">
+      <div class="consent-banner__modal-header">
+        <h2 class="consent-banner__modal-title">Cookie Preferences</h2>
+        <button class="consent-banner__modal-close" id="modal-close">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
-      <div class="cookie-banner__modal-section">
-        <h3 class="cookie-banner__modal-section-title">Essential Cookies</h3>
-        <p class="cookie-banner__modal-section-text">Required for the website to function. Always enabled.</p>
-        <div class="cookie-banner__toggle">
-          <label class="cookie-banner__toggle-label">Session & Security</label>
-          <div class="cookie-banner__toggle-switch" style="opacity:0.5;">
-            <div class="cookie-banner__toggle-switch-knob" style="opacity:0.5;"></div>
+      <div class="consent-banner__modal-section">
+        <h3 class="consent-banner__modal-section-title">Essential Cookies</h3>
+        <p class="consent-banner__modal-section-text">Required for the website to function. Always enabled.</p>
+        <div class="consent-banner__toggle">
+          <label class="consent-banner__toggle-label">Session & Security</label>
+          <div class="consent-banner__toggle-switch" style="opacity:0.5;">
+            <div class="consent-banner__toggle-switch-knob" style="opacity:0.5;"></div>
           </div>
         </div>
       </div>
-      <div class="cookie-banner__modal-section">
-        <h3 class="cookie-banner__modal-section-title">Analytics</h3>
-        <p class="cookie-banner__modal-section-text">Help us understand how you use our site. We use Google Analytics with IP anonymization.</p>
-        <div class="cookie-banner__toggle">
-          <label class="cookie-banner__toggle-label">Google Analytics</label>
-          <div class="cookie-banner__toggle-switch ${consent.analytics ? 'active' : ''}" id="analytics-toggle">
-            <div class="cookie-banner__toggle-switch-knob"></div>
+      <div class="consent-banner__modal-section">
+        <h3 class="consent-banner__modal-section-title">Analytics</h3>
+        <p class="consent-banner__modal-section-text">Help us understand how you use our site. We use Google Analytics with IP anonymization.</p>
+        <div class="consent-banner__toggle">
+          <label class="consent-banner__toggle-label">Google Analytics</label>
+          <div class="consent-banner__toggle-switch ${consent.analytics ? 'active' : ''}" id="analytics-toggle">
+            <div class="consent-banner__toggle-switch-knob"></div>
           </div>
         </div>
       </div>
-      <div class="cookie-banner__modal-actions">
-        <button class="cookie-banner__modal-btn cookie-banner__modal-btn--reject" id="modal-reject">Reject All</button>
-        <button class="cookie-banner__modal-btn cookie-banner__modal-btn--accept" id="modal-accept">Save Preferences</button>
+      <div class="consent-banner__modal-actions">
+        <button class="consent-banner__modal-btn consent-banner__modal-btn--reject" id="modal-reject">Reject All</button>
+        <button class="consent-banner__modal-btn consent-banner__modal-btn--accept" id="modal-accept">Save Preferences</button>
       </div>
     </div>
   `;
@@ -184,6 +184,6 @@ function init() {
   };
 }
 
-export default function initializeCookieBanner() {
+export default function initializeConsentBanner() {
   init();
 }

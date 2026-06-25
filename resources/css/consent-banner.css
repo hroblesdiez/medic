@@ -1,123 +1,123 @@
-.cookie-banner {
+.consent-banner {
   @apply fixed bottom-0 left-0 right-0 z-50 bg-slate-900 text-white p-4 lg:p-6 shadow-2xl border-t border-slate-700;
 }
 
-.cookie-banner__container {
+.consent-banner__container {
   @apply max-w-6xl mx-auto;
 }
 
-.cookie-banner__content {
+.consent-banner__content {
   @apply flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-6;
 }
 
-.cookie-banner__text {
+.consent-banner__text {
   @apply flex-1;
 }
 
-.cookie-banner__title {
+.consent-banner__title {
   @apply text-sm font-bold mb-2 text-white;
 }
 
-.cookie-banner__description {
+.consent-banner__description {
   @apply text-sm text-slate-300 leading-relaxed;
 }
 
-.cookie-banner__link {
+.consent-banner__link {
   @apply text-blue-400 hover:text-blue-300 underline transition-colors;
 }
 
-.cookie-banner__actions {
+.consent-banner__actions {
   @apply flex flex-col sm:flex-row gap-3 flex-shrink-0 w-full lg:w-auto;
 }
 
-.cookie-banner__btn {
+.consent-banner__btn {
   @apply px-4 py-2.5 rounded-lg font-medium text-sm transition-all whitespace-nowrap;
 }
 
-.cookie-banner__btn--accept {
+.consent-banner__btn--accept {
   @apply bg-blue-600 text-white hover:bg-blue-700;
 }
 
-.cookie-banner__btn--reject {
+.consent-banner__btn--reject {
   @apply bg-slate-700 text-white hover:bg-slate-600 border border-slate-600;
 }
 
-.cookie-banner__btn--settings {
+.consent-banner__btn--settings {
   @apply bg-slate-700 text-white hover:bg-slate-600 border border-slate-600;
 }
 
-.cookie-banner__modal {
+.consent-banner__modal {
   @apply fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4;
 }
 
-.cookie-banner__modal-content {
+.consent-banner__modal-content {
   @apply bg-white rounded-2xl shadow-2xl max-w-2xl max-h-[90vh] overflow-y-auto p-6 lg:p-8;
 }
 
-.cookie-banner__modal-header {
+.consent-banner__modal-header {
   @apply flex items-center justify-between mb-6;
 }
 
-.cookie-banner__modal-title {
+.consent-banner__modal-title {
   @apply text-2xl font-bold text-secondary;
 }
 
-.cookie-banner__modal-close {
+.consent-banner__modal-close {
   @apply w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 cursor-pointer transition-colors text-slate-600 hover:text-slate-900;
 }
 
-.cookie-banner__modal-section {
+.consent-banner__modal-section {
   @apply mb-6;
 }
 
-.cookie-banner__modal-section:last-child {
+.consent-banner__modal-section:last-child {
   @apply mb-0;
 }
 
-.cookie-banner__modal-section-title {
+.consent-banner__modal-section-title {
   @apply font-bold text-slate-900 mb-3;
 }
 
-.cookie-banner__modal-section-text {
+.consent-banner__modal-section-text {
   @apply text-sm text-slate-600 leading-relaxed;
 }
 
-.cookie-banner__toggle {
+.consent-banner__toggle {
   @apply flex items-center gap-3 py-3 border-b border-slate-200 last:border-b-0;
 }
 
-.cookie-banner__toggle-label {
+.consent-banner__toggle-label {
   @apply flex-1 text-sm font-medium text-slate-900 cursor-pointer;
 }
 
-.cookie-banner__toggle-switch {
+.consent-banner__toggle-switch {
   @apply relative w-10 h-6 bg-slate-300 rounded-full cursor-pointer transition-colors;
 }
 
-.cookie-banner__toggle-switch.active {
+.consent-banner__toggle-switch.active {
   @apply bg-blue-600;
 }
 
-.cookie-banner__toggle-switch-knob {
+.consent-banner__toggle-switch-knob {
   @apply absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform;
 }
 
-.cookie-banner__toggle-switch.active .cookie-banner__toggle-switch-knob {
+.consent-banner__toggle-switch.active .consent-banner__toggle-switch-knob {
   @apply translate-x-4;
 }
 
-.cookie-banner__modal-actions {
+.consent-banner__modal-actions {
   @apply flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-slate-200;
 }
 
-.cookie-banner__modal-btn {
+.consent-banner__modal-btn {
   @apply px-6 py-3 rounded-lg font-medium text-sm transition-all;
 }
 
-.cookie-banner__modal-btn--reject {
+.consent-banner__modal-btn--reject {
   @apply bg-slate-200 text-slate-900 hover:bg-slate-300;
 }
 
-.cookie-banner__modal-btn--accept {
+.consent-banner__modal-btn--accept {
   @apply bg-blue-600 text-white hover:bg-blue-700;
 }

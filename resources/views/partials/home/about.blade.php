@@ -13,12 +13,12 @@
           <img
             class="w-full rounded-3xl object-cover aspect-4/5"
             src="{{ Vite::asset('resources/images/about_us_1.png') }}"
-            alt="About Us">
+            alt="Medical clinic waiting area and reception desk">
 
           <img
             class="w-full rounded-3xl object-cover aspect-4/5"
             src="{{ Vite::asset('resources/images/about_us_2.png') }}"
-            alt="About Us">
+            alt="Doctor consulting with patient in modern clinic">
 
         </div>
 
@@ -41,7 +41,7 @@
           <img
             class="w-full rounded-3xl object-cover aspect-4/5"
             src="{{ Vite::asset('resources/images/about_us_3.png') }}"
-            alt="About Us">
+            alt="Medical team in consultation room">
 
         </div>
 
@@ -77,10 +77,10 @@
 
           <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary-soft">
 
-            <img
-              class="w-full h-full"
-              src="{{ Vite::asset('resources/images/phone.svg') }}"
-              alt="Phone">
+          <img
+            class="w-full h-full"
+            src="{{ Vite::asset('resources/images/phone.svg') }}"
+            alt="Call us for emergency medical assistance" aria-hidden="true">
 
           </div>
 

@@ -2,8 +2,18 @@
 
 namespace App\Providers;
 
+use App\Admin\ClientDashboard;
+use App\Api\AppointmentsApi;
+use App\Api\AvailabilityApi;
+use App\Api\DoctorApi;
+use App\Api\PostApi;
+use App\Console\Commands\PopulateFAQ;
+use App\Console\Commands\PopulateTestimonials;
+use App\Services\Appointments\AppointmentFormListener;
+use App\Services\DoctorSpecialitySync;
+use App\Services\SchemaService;
+use App\Taxonomies\SpecialityType;
 use Roots\Acorn\Sage\SageServiceProvider;
-
 
 class ThemeServiceProvider extends SageServiceProvider
 {
@@ -25,18 +35,19 @@ class ThemeServiceProvider extends SageServiceProvider
     public function boot()
     {
         parent::boot();
-        (new \App\Taxonomies\SpecialityType())->register();
-        (new \App\Services\DoctorSpecialitySync())->register();
-        (new \App\Api\DoctorApi())->register();
-        (new \App\Api\PostApi())->register();
-        (new \App\Api\AvailabilityApi())->register();
-        (new \App\Api\AppointmentsApi())->register();
-        (new \App\Admin\ClientDashboard())->register();
-        (new \App\Services\Appointments\AppointmentFormListener())->register();
+        (new SpecialityType)->register();
+        (new DoctorSpecialitySync)->register();
+        (new DoctorApi)->register();
+        (new PostApi)->register();
+        (new AvailabilityApi)->register();
+        (new AppointmentsApi)->register();
+        (new ClientDashboard)->register();
+        (new AppointmentFormListener)->register();
+        (new SchemaService)->register();
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \App\Console\Commands\PopulateTestimonials::class,
-                \App\Console\Commands\PopulateFAQ::class,
+                PopulateTestimonials::class,
+                PopulateFAQ::class,
             ]);
         }
     }

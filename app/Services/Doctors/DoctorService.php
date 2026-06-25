@@ -12,7 +12,7 @@ class DoctorService
             $doctor = get_post($doctor);
         }
 
-        if (!$doctor instanceof WP_Post || $doctor->post_type !== 'doctors') {
+        if (! $doctor instanceof WP_Post || $doctor->post_type !== 'doctors') {
             return [];
         }
 
@@ -23,22 +23,31 @@ class DoctorService
             ?: 'https://via.placeholder.com/600x600';
 
         $specialities = get_the_terms($id, 'speciality_type');
-        $specialities_list = !is_wp_error($specialities) && !empty($specialities)
-            ? array_map(fn($term) => $term->name, $specialities)
+        $specialities_list = ! is_wp_error($specialities) && ! empty($specialities)
+            ? array_map(fn ($term) => $term->name, $specialities)
             : [];
 
         $bio = carbon_get_post_meta($id, 'doctor_bio');
 
-        $short_bio = wp_trim_words(
-            wp_strip_all_tags($bio),
-            30
-        );
+        $seoTitle = carbon_get_post_meta($id, 'doctor_seo_title');
+        $seoDescription = carbon_get_post_meta($id, 'doctor_seo_description');
+
+        if (empty($seoTitle)) {
+            $seoTitle = get_the_title($id).' | '.get_bloginfo('name');
+        }
+
+        if (empty($seoDescription)) {
+            $seoDescription = wp_trim_words(
+                wp_strip_all_tags($bio),
+                30
+            );
+        }
 
         return [
             'id' => $id,
             'title' => get_the_title($id),
             'name' => get_the_title($id),
-            'speciality' => !empty($specialities_list) ? $specialities_list[0] : '',
+            'speciality' => ! empty($specialities_list) ? $specialities_list[0] : '',
             'location' => carbon_get_post_meta($id, 'doctor_location') ?: '',
             'price' => carbon_get_post_meta($id, 'doctor_price') ?: '',
             'experience' => carbon_get_post_meta($id, 'doctor_years_experience') ?: '',
@@ -50,9 +59,9 @@ class DoctorService
             'url' => get_permalink($id),
             'booking_url' => home_url("/book-appointment?doctor={$id}"),
             'seo' => [
-                'title' => get_the_title($id) . ' | Medical Clinic',
-                'description' => $short_bio,
-            ]
+                'title' => $seoTitle,
+                'description' => $seoDescription,
+            ],
         ];
     }
 }
